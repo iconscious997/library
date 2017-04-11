@@ -1,0 +1,63 @@
+// Simple transition mixin with all browser coverage
+@mixin transitions($transitions...) {
+    -webkit-transition: $transitions;
+    -moz-transition: $transitions;
+    -o-transition: $transitions;
+    transition: $transitions;
+}
+
+// Add columns to paragraph
+@mixin columns($count, $gap) {
+    -moz-column-count: $count;
+    -moz-column-gap: $gap;
+    -webkit-column-count: $count;
+    -webkit-column-gap: $gap;
+    column-count: $count;
+    column-gap: $gap;
+}
+
+// Change colour of placholder text in inputs.
+@mixin placeholder($color) {
+    // Webkit, Blink, Edge
+    ::-webkit-input-placeholder {
+        color:    $color;
+    }
+    // Mozila Firefox 4 to 18
+    :-moz-placeholder {
+        color:    $color;
+        opacity:  1;
+    }
+    // Mozilla Firefox 19+
+    ::-moz-placeholder {
+        color:    $color;
+        opacity:  1;
+    }
+    // Internet Explorer 10-11
+    :-ms-input-placeholder {
+        color:    $color;
+    }
+}
+
+// Rotate div in all browsers
+@mixin rotate($degree) {
+    -moz-transform: rotate($degree);
+    -o-transform: rotate($degree);
+    -webkit-transform: rotate($degree);
+    transform: rotate($degree);
+}
+
+@mixin paragraph {
+    font-family:  Arial, serif;
+
+    .wf-varelaround-n4-active & {
+        font-family: "Varela Round", Arial, serif;
+    }
+}
+
+@mixin heading {
+    font-family:  Arial, serif;
+
+    .wf-oswald-n4-active & {
+        font-family: Oswald, Arial, serif;
+    }
+}

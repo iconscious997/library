@@ -1,0 +1,89 @@
+form {
+    margin: 10% auto 0;
+    width: 450px;
+
+    h1 {
+        @include paragraph;
+        margin: 1em 0 1em 0;
+    }
+
+    .edit-subject {
+        color: $green500;
+    }
+
+    .has-error {
+        input {
+            border-color: $red500;
+            &:active,
+            &:hover,
+            &:focus {
+                border-color: $red500;
+                outline: none;
+            }
+        }
+
+        label {
+            color: $red500;
+        }
+
+        .error-text {
+            @include heading;
+            color: $red500;
+            font-size: .85em;
+            margin: -1.5em 0 1.5em 0;
+        }
+    }
+
+    label {
+        @include heading;
+        color: $green700;
+        display: block;
+        font-size: .85em;
+        margin: 0 0 .5em 0;
+    }
+
+    input {
+        @include paragraph;
+        border: none;
+        border-bottom: 1px solid $black;
+        display: block;
+        font-size: 1em;
+        margin: 0 0 2em 0;
+        width: 100%;
+
+        &:active,
+        &:hover,
+        &:focus {
+            border-color: $green500;
+            outline: none;
+        }
+    }
+
+    button,
+    .button {
+        @include paragraph;
+        @include transitions(background-color .3s, color .3s);
+        background-color: $black;
+        border: none;
+        border-radius: 0.3em;
+        color: $white;
+        cursor: pointer;
+        font-size: .85em;
+        padding: 1em 1.5em;
+        text-decoration: none;
+
+        &.secondary {
+            background-color: $white;
+            color: $black;
+            margin: 0 0 0 .5em;
+        }
+
+        &:active,
+        &:hover,
+        &:focus {
+            background-color: $green500;
+            color: $black;
+            outline: none;
+        }
+    }
+}

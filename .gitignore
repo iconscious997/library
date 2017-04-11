@@ -1,0 +1,26 @@
+# Node
+/node_modules
+
+# Laravel
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+
+# PHPStorm
+/.idea
+
+# Vagrant
+/.vagrant
+
+# Homestead
+Homestead.json
+Homestead.yaml
+
+# IDE helper
+.phpstorm.meta.php
+_ide_helper.php
+
+# Apache
+.apache

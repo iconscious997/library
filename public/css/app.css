@@ -1,0 +1,215 @@
+@font-face {
+  font-family: Oswald;
+  src: url("../fonts/Oswald-Regular.ttf");
+  font-weight: 400;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Varela Round";
+  src: url("../fonts/VarelaRound-Regular.ttf");
+  font-weight: 400;
+  font-style: normal; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%; }
+
+body {
+  border: 15px solid #0e171a;
+  box-sizing: border-box; }
+
+#app-header {
+  font-family: Arial, serif;
+  box-sizing: border-box;
+  padding: 1em 1.5em; }
+  .wf-varelaround-n4-active #app-header {
+    font-family: "Varela Round", Arial, serif; }
+  #app-header h1 {
+    color: #0e171a;
+    display: inline-block;
+    font-size: 3em;
+    margin: 0;
+    padding: 0; }
+    #app-header h1 a {
+      -webkit-transition: color 0.3s;
+      -moz-transition: color 0.3s;
+      -o-transition: color 0.3s;
+      transition: color 0.3s;
+      color: #0e171a;
+      text-decoration: none; }
+      #app-header h1 a:active, #app-header h1 a:hover, #app-header h1 a:focus {
+        color: #17e8a6; }
+  #app-header #user-panel {
+    display: inline-block;
+    float: right;
+    padding: 1.85em 0 0 0; }
+    #app-header #user-panel a {
+      -webkit-transition: color 0.3s, border-color 0.3s;
+      -moz-transition: color 0.3s, border-color 0.3s;
+      -o-transition: color 0.3s, border-color 0.3s;
+      transition: color 0.3s, border-color 0.3s;
+      border-bottom: 1px solid #ffffff;
+      color: #0e171a;
+      text-decoration: none; }
+      #app-header #user-panel a:active, #app-header #user-panel a:hover, #app-header #user-panel a:focus {
+        border-color: #17e8a6;
+        color: #17e8a6; }
+      #app-header #user-panel a:last-of-type {
+        margin-left: .65em; }
+
+form {
+  margin: 10% auto 0;
+  width: 450px; }
+  form h1 {
+    font-family: Arial, serif;
+    margin: 1em 0 1em 0; }
+    .wf-varelaround-n4-active form h1 {
+      font-family: "Varela Round", Arial, serif; }
+  form .edit-subject {
+    color: #17e8a6; }
+  form .has-error input {
+    border-color: #b44343; }
+    form .has-error input:active, form .has-error input:hover, form .has-error input:focus {
+      border-color: #b44343;
+      outline: none; }
+  form .has-error label {
+    color: #b44343; }
+  form .has-error .error-text {
+    font-family: Arial, serif;
+    color: #b44343;
+    font-size: .85em;
+    margin: -1.5em 0 1.5em 0; }
+    .wf-oswald-n4-active form .has-error .error-text {
+      font-family: Oswald, Arial, serif; }
+  form label {
+    font-family: Arial, serif;
+    color: #21ad81;
+    display: block;
+    font-size: .85em;
+    margin: 0 0 .5em 0; }
+    .wf-oswald-n4-active form label {
+      font-family: Oswald, Arial, serif; }
+  form input {
+    font-family: Arial, serif;
+    border: none;
+    border-bottom: 1px solid #0e171a;
+    display: block;
+    font-size: 1em;
+    margin: 0 0 2em 0;
+    width: 100%; }
+    .wf-varelaround-n4-active form input {
+      font-family: "Varela Round", Arial, serif; }
+    form input:active, form input:hover, form input:focus {
+      border-color: #17e8a6;
+      outline: none; }
+  form button,
+  form .button {
+    font-family: Arial, serif;
+    -webkit-transition: background-color 0.3s, color 0.3s;
+    -moz-transition: background-color 0.3s, color 0.3s;
+    -o-transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s, color 0.3s;
+    background-color: #0e171a;
+    border: none;
+    border-radius: 0.3em;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: .85em;
+    padding: 1em 1.5em;
+    text-decoration: none; }
+    .wf-varelaround-n4-active form button, .wf-varelaround-n4-active
+    form .button {
+      font-family: "Varela Round", Arial, serif; }
+    form button.secondary,
+    form .button.secondary {
+      background-color: #ffffff;
+      color: #0e171a;
+      margin: 0 0 0 .5em; }
+    form button:active, form button:hover, form button:focus,
+    form .button:active,
+    form .button:hover,
+    form .button:focus {
+      background-color: #17e8a6;
+      color: #0e171a;
+      outline: none; }
+
+#sign-up,
+#sign-in {
+  margin: 10% auto 0;
+  width: 400px; }
+  #sign-up .has-error,
+  #sign-in .has-error {
+    color: #b44343;
+    border-color: #b44343; }
+  #sign-up label,
+  #sign-in label {
+    font-family: Arial, serif;
+    color: #21ad81;
+    display: block;
+    font-size: .85em;
+    margin: 0 0 .5em 0; }
+    .wf-oswald-n4-active #sign-up label, .wf-oswald-n4-active
+    #sign-in label {
+      font-family: Oswald, Arial, serif; }
+  #sign-up input,
+  #sign-in input {
+    font-family: Arial, serif;
+    border: none;
+    border-bottom: 1px solid #0e171a;
+    display: block;
+    font-size: 1em;
+    margin: 0 0 2em 0;
+    width: 100%; }
+    .wf-varelaround-n4-active #sign-up input, .wf-varelaround-n4-active
+    #sign-in input {
+      font-family: "Varela Round", Arial, serif; }
+    #sign-up input:active, #sign-up input:hover, #sign-up input:focus,
+    #sign-in input:active,
+    #sign-in input:hover,
+    #sign-in input:focus {
+      border-color: #17e8a6;
+      outline: none; }
+  #sign-up button,
+  #sign-up .button,
+  #sign-in button,
+  #sign-in .button {
+    font-family: Arial, serif;
+    -webkit-transition: background-color 0.3s, color 0.3s;
+    -moz-transition: background-color 0.3s, color 0.3s;
+    -o-transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s, color 0.3s;
+    background-color: #0e171a;
+    border: none;
+    border-radius: 0.3em;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: .85em;
+    padding: 1em 1.5em;
+    text-decoration: none; }
+    .wf-varelaround-n4-active #sign-up button, .wf-varelaround-n4-active
+    #sign-up .button, .wf-varelaround-n4-active
+    #sign-in button, .wf-varelaround-n4-active
+    #sign-in .button {
+      font-family: "Varela Round", Arial, serif; }
+    #sign-up button.secondary,
+    #sign-up .button.secondary,
+    #sign-in button.secondary,
+    #sign-in .button.secondary {
+      background-color: #ffffff;
+      color: #0e171a;
+      margin: 0 0 0 .5em; }
+    #sign-up button:active, #sign-up button:hover, #sign-up button:focus,
+    #sign-up .button:active,
+    #sign-up .button:hover,
+    #sign-up .button:focus,
+    #sign-in button:active,
+    #sign-in button:hover,
+    #sign-in button:focus,
+    #sign-in .button:active,
+    #sign-in .button:hover,
+    #sign-in .button:focus {
+      background-color: #17e8a6;
+      color: #0e171a;
+      outline: none; }
