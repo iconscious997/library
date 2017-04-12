@@ -15,6 +15,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $repositories = [
             'Author',
+            'Medium',
             'Publisher'
         ];
 

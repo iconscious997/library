@@ -1,37 +1,37 @@
 <?php
 
-namespace App\Repositories\Author;
+namespace App\Repositories\Medium;
 
-use App\Author;
+use App\Medium;
 
-class AuthorEloquentRepository implements AuthorInterface
+class MediumEloquentRepository implements MediumInterface
 {
     /**
-     * Create new author in DB.
+     * Create new medium row.
      *
      * @param array $data
      * @return \Illuminate\Database\Eloquent\Model
      */
     public function store(array $data)
     {
-        $data['slug'] = str_slug($data['name'].' '.$data['surname']);
+        $data['slug'] = str_slug($data['name']);
 
-        return Author::create($data);
+        return Medium::create($data);
     }
 
     /**
-     * Retrive author by id.
+     * Retrieve medium by Id.
      *
      * @param int $id
-     * @return Author
+     * @return Medium
      */
     public function find(int $id)
     {
-        return Author::find($id);
+        return Medium::find($id);
     }
 
     /**
-     * Update author row in DB.
+     * Update medium row in db.
      *
      * @param array $data
      * @param int $id
@@ -39,7 +39,7 @@ class AuthorEloquentRepository implements AuthorInterface
      */
     public function update(array $data, int $id)
     {
-        $data['slug'] = str_slug($data['name'].' '.$data['surname']);
+        $data['slug'] = str_slug($data['name']);
 
         return $this->find($id)->update($data);
     }

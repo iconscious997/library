@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// User routes
 Auth::routes();
 
 // Publisher routes
@@ -36,3 +37,13 @@ Route::get('/author/edit/{id}', 'AuthorController@edit')
     ->name('author.edit');
 Route::patch('/author/update/{id}', 'AuthorController@update')
     ->name('author.update');
+
+// Medium routes
+Route::get('/medium/create', 'MediumController@create')
+    ->name('medium.create');
+Route::post('/medium/store', 'MediumController@store')
+    ->name('medium.store');
+Route::get('/medium/edit/{id}', 'MediumController@edit')
+    ->name('medium.edit');
+Route::patch('/medium/update/{id}', 'MediumController@update')
+    ->name('medium.update');

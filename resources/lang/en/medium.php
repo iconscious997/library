@@ -4,38 +4,37 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Author language lines
+    | Medium language lines
     |--------------------------------------------------------------------------
     |
     | ...
     |
     */
 
-    'name'    => 'Name',
-    'surname' => 'Surname',
+    'name'    => 'Type',
 
     /*
     |--------------------------------------------------------------------------
-    | Create Author Language Lines
+    | Create Medium Language Lines
     |--------------------------------------------------------------------------
     |
     | ...
     |
     */
 
-    'create-title'  => 'Create new author',
+    'create-title'  => 'Add new medium',
     'create-button' => 'Submit',
 
     /*
     |--------------------------------------------------------------------------
-    | Edit Author Language Lines
+    | Edit Medium Language Lines
     |--------------------------------------------------------------------------
     |
     | ...
     |
     */
 
-    'edit-title'  => 'Edit author: <span class="edit-subject">:author</span>',
+    'edit-title'  => 'Edit medium: <span class="edit-subject">:medium</span>',
     'edit-button' => 'Update',
 
 ];
