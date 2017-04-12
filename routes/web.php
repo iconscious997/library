@@ -26,3 +26,13 @@ Route::get('/publisher/edit/{id}', 'PublisherController@edit')
     ->name('publisher.edit');
 Route::patch('/publisher/update/{id}', 'PublisherController@update')
     ->name('publisher.update');
+
+// Author routes
+Route::get('/author/create', 'AuthorController@create')
+    ->name('author.create');
+Route::post('/author/store', 'AuthorController@store')
+    ->name('author.store');
+Route::get('/author/edit/{id}', 'AuthorController@edit')
+    ->name('author.edit');
+Route::patch('/author/update/{id}', 'AuthorController@update')
+    ->name('author.update');

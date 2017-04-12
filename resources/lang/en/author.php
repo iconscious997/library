@@ -11,8 +11,8 @@ return [
     |
     */
 
-    'name'     => 'Name',
-    'location' => 'City or state',
+    'name'    => 'Name',
+    'surname' => 'Surname',
 
     /*
     |--------------------------------------------------------------------------
@@ -23,7 +23,7 @@ return [
     |
     */
 
-    'create-title'  => 'Create new publisher',
+    'create-title'  => 'Create new author',
     'create-button' => 'Submit',
 
     /*
@@ -35,7 +35,7 @@ return [
     |
     */
 
-    'edit-title'  => 'Edit publisher: <span class="edit-subject">:publisher</span>',
+    'edit-title'  => 'Edit author: <span class="edit-subject">:author</span>',
     'edit-button' => 'Update',
 
 ];
