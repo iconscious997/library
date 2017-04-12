@@ -10,20 +10,29 @@
   font-weight: 400;
   font-style: normal; }
 
-html, body {
+html, body, #site-border {
   height: 100%;
   margin: 0;
   padding: 0;
   width: 100%; }
 
 body {
-  border: 15px solid #0e171a;
   box-sizing: border-box; }
+
+#site-border {
+  border: 15px solid #0e171a;
+  box-sizing: border-box;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999; }
+
+#content {
+  padding: 0 0 6em 0; }
 
 #app-header {
   font-family: Arial, serif;
   box-sizing: border-box;
-  padding: 1em 1.5em; }
+  padding: 2em 3.5em 0 2.5em; }
   .wf-varelaround-n4-active #app-header {
     font-family: "Varela Round", Arial, serif; }
   #app-header h1 {
@@ -62,6 +71,16 @@ body {
 form {
   margin: 10% auto 0;
   width: 450px; }
+  form ::-webkit-input-placeholder {
+    color: #17e8a6; }
+  form :-moz-placeholder {
+    color: #17e8a6;
+    opacity: 1; }
+  form ::-moz-placeholder {
+    color: #17e8a6;
+    opacity: 1; }
+  form :-ms-input-placeholder {
+    color: #17e8a6; }
   form h1 {
     font-family: Arial, serif;
     margin: 1em 0 1em 0; }
@@ -83,14 +102,10 @@ form {
     margin: -1.5em 0 1.5em 0; }
     .wf-oswald-n4-active form .has-error .error-text {
       font-family: Oswald, Arial, serif; }
-  form label {
-    font-family: Arial, serif;
-    color: #21ad81;
-    display: block;
-    font-size: .85em;
-    margin: 0 0 .5em 0; }
-    .wf-oswald-n4-active form label {
-      font-family: Oswald, Arial, serif; }
+  form .checkbox-group {
+    margin: -.75em 0 2em 0; }
+  form .select-group {
+    margin: -.75em 0 2em 0; }
   form input {
     font-family: Arial, serif;
     border: none;
@@ -104,6 +119,38 @@ form {
     form input:active, form input:hover, form input:focus {
       border-color: #17e8a6;
       outline: none; }
+  form label {
+    font-family: Arial, serif;
+    color: #21ad81;
+    display: block;
+    font-size: .85em;
+    margin: 0 0 .5em 0; }
+    .wf-oswald-n4-active form label {
+      font-family: Oswald, Arial, serif; }
+    form label.checkbox {
+      font-family: Arial, serif;
+      color: #0e171a;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 1em;
+      line-height: 2em;
+      margin: 0 1.5em 0 0;
+      padding: 0;
+      vertical-align: middle; }
+      .wf-varelaround-n4-active form label.checkbox {
+        font-family: "Varela Round", Arial, serif; }
+      form label.checkbox:last-of-type {
+        margin: 0; }
+      form label.checkbox:active, form label.checkbox:hover, form label.checkbox:focus {
+        color: #17e8a6;
+        outline: none; }
+      form label.checkbox input {
+        display: inline-block;
+        line-height: 2em;
+        margin: -.05em 0 0 .25em;
+        padding: 0;
+        vertical-align: middle;
+        width: auto; }
   form textarea {
     font-family: Arial, serif;
     border: 1px solid #0e171a;

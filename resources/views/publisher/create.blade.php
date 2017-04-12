@@ -8,7 +8,7 @@
 
         <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
             <label for="publisher-name">{{ trans('publisher.name') }}</label>
-            <input type="text" id="publisher-name" name="name" required autofocus>
+            <input type="text" id="publisher-name" name="name" placeholder="Required" required autofocus>
             @if ($errors->has('name'))
                 <div class="error-text">
                     {{ $errors->first('name') }}

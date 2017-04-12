@@ -29,4 +29,12 @@ interface AuthorInterface
      * @return bool
      */
     public function update(array $data, int $id);
+
+    /**
+     * Get author by name.
+     *
+     * @param string $name
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public function getByName(string $name);
 }

@@ -29,4 +29,11 @@ interface MediumInterface
      * @return bool
      */
     public function update(array $data, int $id);
+
+    /**
+     * List all stored mediums.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public function all();
 }

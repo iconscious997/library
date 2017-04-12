@@ -18,6 +18,12 @@ Route::get('/', function () {
 // User routes
 Auth::routes();
 
+// Book routes
+Route::get('/book/create', 'BookController@create')
+    ->name('book.create');
+Route::post('/book/store', 'BookController@create')
+    ->name('book.store');
+
 // Publisher routes
 Route::get('/publisher/create', 'PublisherController@create')
     ->name('publisher.create');
@@ -37,6 +43,8 @@ Route::get('/author/edit/{id}', 'AuthorController@edit')
     ->name('author.edit');
 Route::patch('/author/update/{id}', 'AuthorController@update')
     ->name('author.update');
+Route::get('/author/select', 'AuthorController@select')
+    ->name('author.select');
 
 // Medium routes
 Route::get('/medium/create', 'MediumController@create')
@@ -67,3 +75,5 @@ Route::get('/tag/edit/{id}', 'TagController@edit')
     ->name('tag.edit');
 Route::patch('/tag/update/{id}', 'TagController@update')
     ->name('tag.update');
+Route::get('/tag/select', 'TagController@select')
+    ->name('tag.select');

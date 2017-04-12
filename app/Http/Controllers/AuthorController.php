@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\Author\AuthorInterface;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class AuthorController extends Controller
@@ -90,6 +91,27 @@ class AuthorController extends Controller
 
             return redirect('/');
         }
+    }
+
+    /**
+     * Handle Select2 request on application.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function select(Request $request)
+    {
+        $results = [];
+        $authors = $this->author->getByName($request->author);
+
+        foreach ($authors as $author) {
+            $results['authors'][] = [
+                'id' => $author->id,
+                'text' => $author->name . ' ' . $author->surname
+            ];
+        }
+
+        return response()->json($results);
     }
 
     /**

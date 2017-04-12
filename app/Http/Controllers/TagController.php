@@ -91,6 +91,27 @@ class TagController extends Controller
     }
 
     /**
+     * Handle Select2 request on application.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function select(Request $request)
+    {
+        $results = [];
+        $tags = $this->tag->getByName($request->tag);
+
+        foreach ($tags as $tag) {
+            $results['authors'][] = [
+                'id' => $tag->id,
+                'text' => $tag->name . ' ' . $tag->surname
+            ];
+        }
+
+        return response()->json($results);
+    }
+
+    /**
      * Validate input.
      *
      * @param array $data

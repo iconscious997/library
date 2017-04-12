@@ -3,6 +3,7 @@
 namespace App\Repositories\Author;
 
 use App\Author;
+use Illuminate\Support\Facades\DB;
 
 class AuthorEloquentRepository implements AuthorInterface
 {
@@ -42,5 +43,20 @@ class AuthorEloquentRepository implements AuthorInterface
         $data['slug'] = str_slug($data['name'].' '.$data['surname']);
 
         return $this->find($id)->update($data);
+    }
+
+    /**
+     * Get author by name.
+     *
+     * @param string $name
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public function getByName(string $name)
+    {
+        $name = strtolower($name);
+
+        return Author::where(DB::raw('concat(name, \' \', surname)'), 'LIKE', '%'. $name .'%')
+            ->limit(15)
+            ->get();
     }
 }

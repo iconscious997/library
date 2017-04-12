@@ -1,4 +1,5 @@
 form {
+    @include placeholder($green500);
     margin: 10% auto 0;
     width: 450px;
 
@@ -34,12 +35,12 @@ form {
         }
     }
 
-    label {
-        @include heading;
-        color: $green700;
-        display: block;
-        font-size: .85em;
-        margin: 0 0 .5em 0;
+    .checkbox-group {
+        margin: -.75em 0 2em 0;
+    }
+
+    .select-group {
+        margin: -.75em 0 2em 0;
     }
 
     input {
@@ -56,6 +57,46 @@ form {
         &:focus {
             border-color: $green500;
             outline: none;
+        }
+    }
+
+    label {
+        @include heading;
+        color: $green700;
+        display: block;
+        font-size: .85em;
+        margin: 0 0 .5em 0;
+
+        &.checkbox {
+            @include paragraph;
+            color: $black;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 1em;
+            line-height: 2em;
+            margin: 0 1.5em 0 0;
+            padding: 0;
+            vertical-align: middle;
+
+            &:last-of-type {
+                margin: 0;
+            }
+
+            &:active,
+            &:hover,
+            &:focus {
+                color: $green500;
+                outline: none;
+            }
+
+            input {
+                display: inline-block;
+                line-height: 2em;
+                margin: -.05em 0 0 .25em;
+                padding: 0;
+                vertical-align: middle;
+                width: auto;
+            }
         }
     }
 

@@ -43,4 +43,17 @@ class TagEloquentRepository implements TagInterface
 
         return $this->find($id)->update($data);
     }
+
+    /**
+     * Get tag by name.
+     *
+     * @param string $name
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public function getByName(string $name)
+    {
+        return Tag::where('name', 'LIKE', '%'. $name .'%')
+            ->limit(15)
+            ->get();
+    }
 }

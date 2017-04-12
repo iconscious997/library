@@ -28,4 +28,12 @@ interface TagInterface
      * @return bool
      */
     public function update(array $data, int $id);
+
+    /**
+     * Get tag by name.
+     *
+     * @param string $name
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public function getByName(string $name);
 }

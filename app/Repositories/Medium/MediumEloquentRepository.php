@@ -43,4 +43,14 @@ class MediumEloquentRepository implements MediumInterface
 
         return $this->find($id)->update($data);
     }
+
+    /**
+     * List all stored mediums.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public function all()
+    {
+        return Medium::all();
+    }
 }

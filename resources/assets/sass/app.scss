@@ -11,8 +11,20 @@ html {
 }
 body {
     @extend html;
+    box-sizing: border-box;
+}
+
+#site-border {
+    @extend html;
     border: 15px solid $black;
     box-sizing: border-box;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+#content {
+    padding: 0 0 6em 0;
 }
 
 @import "site/header";
