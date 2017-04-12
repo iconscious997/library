@@ -47,3 +47,13 @@ Route::get('/medium/edit/{id}', 'MediumController@edit')
     ->name('medium.edit');
 Route::patch('/medium/update/{id}', 'MediumController@update')
     ->name('medium.update');
+
+// Shelf routes
+Route::get('/shelf/create', 'ShelfController@create')
+    ->name('shelf.create');
+Route::post('/shelf/store', 'ShelfController@store')
+    ->name('shelf.store');
+Route::get('/shelf/edit/{id}', 'ShelfController@edit')
+    ->name('shelf.edit');
+Route::patch('/shelf/update/{id}', 'ShelfController@update')
+    ->name('shelf.update');

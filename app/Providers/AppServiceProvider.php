@@ -16,7 +16,8 @@ class AppServiceProvider extends ServiceProvider
         $repositories = [
             'Author',
             'Medium',
-            'Publisher'
+            'Publisher',
+            'Shelf'
         ];
 
         // Bind interfaces and repositories
