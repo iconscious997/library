@@ -59,6 +59,24 @@ form {
         }
     }
 
+    textarea {
+        @include paragraph;
+        border: 1px solid $black;
+        box-sizing: border-box;
+        display: block;
+        font-size: 1em;
+        margin: 0 0 2em 0;
+        padding: .5em;
+        width: 100%;
+
+        &:active,
+        &:hover,
+        &:focus {
+            border-color: $green500;
+            outline: none;
+        }
+    }
+
     button,
     .button {
         @include paragraph;

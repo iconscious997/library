@@ -57,3 +57,13 @@ Route::get('/shelf/edit/{id}', 'ShelfController@edit')
     ->name('shelf.edit');
 Route::patch('/shelf/update/{id}', 'ShelfController@update')
     ->name('shelf.update');
+
+// Tag routes
+Route::get('/tag/create', 'TagController@create')
+    ->name('tag.create');
+Route::post('/tag/store', 'TagController@store')
+    ->name('tag.store');
+Route::get('/tag/edit/{id}', 'TagController@edit')
+    ->name('tag.edit');
+Route::patch('/tag/update/{id}', 'TagController@update')
+    ->name('tag.update');

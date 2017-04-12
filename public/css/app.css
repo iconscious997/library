@@ -104,6 +104,20 @@ form {
     form input:active, form input:hover, form input:focus {
       border-color: #17e8a6;
       outline: none; }
+  form textarea {
+    font-family: Arial, serif;
+    border: 1px solid #0e171a;
+    box-sizing: border-box;
+    display: block;
+    font-size: 1em;
+    margin: 0 0 2em 0;
+    padding: .5em;
+    width: 100%; }
+    .wf-varelaround-n4-active form textarea {
+      font-family: "Varela Round", Arial, serif; }
+    form textarea:active, form textarea:hover, form textarea:focus {
+      border-color: #17e8a6;
+      outline: none; }
   form button,
   form .button {
     font-family: Arial, serif;
