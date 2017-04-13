@@ -43,7 +43,7 @@ class Book extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'year', 'isbn'
+        'name', 'description', 'year', 'isbn', 'publisher_id', 'medium_id', 'slug'
     ];
 
     /**
@@ -71,7 +71,7 @@ class Book extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function tag()
+    public function tags()
     {
         return $this->belongsToMany('App\Tag', 'book_tag', 'book_id', 'tag_id');
     }
@@ -81,7 +81,7 @@ class Book extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function author()
+    public function authors()
     {
         return $this->belongsToMany('App\Author', 'book_author', 'book_id', 'author_id');
     }
@@ -91,7 +91,7 @@ class Book extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function shelf()
+    public function shelves()
     {
         return $this->belongsToMany('App\Shelf', 'book_shelf', 'book_id', 'shelf_id');
     }

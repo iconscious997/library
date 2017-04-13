@@ -29,4 +29,12 @@ interface ShelfInterface
      * @return bool
      */
     public function update(array $data, int $id);
+
+    /**
+     * Get shelf by name.
+     *
+     * @param string $name
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public function getByName(string $name);
 }

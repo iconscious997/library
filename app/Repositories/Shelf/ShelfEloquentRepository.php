@@ -44,4 +44,19 @@ class ShelfEloquentRepository implements ShelfInterface
 
         return $this->find($id)->update($data);
     }
+
+    /**
+     * Get shelf by name.
+     *
+     * @param string $name
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public function getByName(string $name)
+    {
+        $name = str_slug($name);
+
+        return Shelf::where('slug', 'LIKE', '%'. $name .'%')
+            ->limit(15)
+            ->get();
+    }
 }

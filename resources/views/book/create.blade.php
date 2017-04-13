@@ -28,7 +28,7 @@
 
         <div class="form-group {{ $errors->has('isbn') ? ' has-error' : '' }}">
             <label for="book-isbn">{{ trans('book.isbn') }}</label>
-            <input type="text" id="book-isbn" name="isbn" placeholder="{{ trans('form.required') }}" required>
+            <input type="text" id="book-isbn" name="isbn">
             @if ($errors->has('isbn'))
                 <div class="error-text">
                     {{ $errors->first('isbn') }}
@@ -51,21 +51,35 @@
             @foreach($mediums as $medium)
                 <label for="book-medium-{{ $medium->id }}" class="checkbox">
                     {{ $medium->name }}
-                    <input type="checkbox" value="{{ $medium->id }}" id="book-medium-{{ $medium->id }}" name="medium[]">
+                    <input type="radio" value="{{ $medium->id }}" id="book-medium-{{ $medium->id }}" name="medium">
                 </label>
             @endforeach
         </div>
 
         <div class="form-group select-group {{ $errors->has('medium') ? ' has-error' : '' }}">
             <label for="book-authors">{{ trans('book.author') }}</label>
-            <select multiple name="authors[]" id="book-authors" style="width: 100%">
+            <select multiple name="authors[]" id="book-authors" style="width: 100%" required>
                 <!-- will be generated -->
             </select>
         </div>
 
         <div class="form-group select-group {{ $errors->has('medium') ? ' has-error' : '' }}">
             <label for="book-tags">{{ trans('book.tag') }}</label>
-            <select multiple name="tags[]" id="book-tags" style="width: 100%">
+            <select multiple name="tags[]" id="book-tags" style="width: 100%" required>
+                <!-- will be generated -->
+            </select>
+        </div>
+
+        <div class="form-group select-group {{ $errors->has('shelf') ? ' has-error' : '' }}" >
+            <label for="book-shelf">{{ trans('book.shelf') }}</label>
+            <select multiple name="shelves[]" id="book-shelf" style="width: 100%" required>
+                <!-- will be generated -->
+            </select>
+        </div>
+
+        <div class="form-group select-group {{ $errors->has('publisher') ? ' has-error' : '' }}">
+            <label for="book-publisher">{{ trans('book.publisher') }}</label>
+            <select name="publisher" id="book-publisher" style="width: 100%" required>
                 <!-- will be generated -->
             </select>
         </div>
@@ -78,6 +92,7 @@
 
 @section('javascript')
     <script>
+        // Book authors
         $('#book-authors').select2({
             language: '{{ config('app.locale') }}',
             minimumInputLength: 3,
@@ -101,6 +116,7 @@
             }
         });
 
+        // Book tags
         $('#book-tags').select2({
             language: '{{ config('app.locale') }}',
             minimumInputLength: 3,
@@ -118,6 +134,54 @@
                 processResults: function (data) {
                     return {
                         results: data.authors
+                    };
+                },
+                cache: true,
+            }
+        });
+
+        // Book shelf
+        $('#book-shelf').select2({
+            language: '{{ config('app.locale') }}',
+            minimumInputLength: 3,
+            minimumResultsForSearch: Infinity,
+            allowClear: true,
+            placeholder: " ",
+            ajax: {
+                url: "{{ route('shelf.select') }}",
+                dataType: 'json',
+                data: function (params) {
+                    return {
+                        shelf: params.term,
+                    };
+                },
+                processResults: function (data) {
+                    return {
+                        results: data.shelves
+                    };
+                },
+                cache: true,
+            }
+        });
+
+        // Book publisher
+        $('#book-publisher').select2({
+            language: '{{ config('app.locale') }}',
+            minimumInputLength: 3,
+            minimumResultsForSearch: Infinity,
+            allowClear: true,
+            placeholder: " ",
+            ajax: {
+                url: "{{ route('publisher.select') }}",
+                dataType: 'json',
+                data: function (params) {
+                    return {
+                        publisher: params.term,
+                    };
+                },
+                processResults: function (data) {
+                    return {
+                        results: data.publishers
                     };
                 },
                 cache: true,

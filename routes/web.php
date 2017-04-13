@@ -21,8 +21,12 @@ Auth::routes();
 // Book routes
 Route::get('/book/create', 'BookController@create')
     ->name('book.create');
-Route::post('/book/store', 'BookController@create')
+Route::post('/book/store', 'BookController@store')
     ->name('book.store');
+Route::get('/book/edit/{id}', 'BookController@edit')
+    ->name('book.edit');
+Route::patch('/book/update/{id}', 'BookController@update')
+    ->name('book.update');
 
 // Publisher routes
 Route::get('/publisher/create', 'PublisherController@create')
@@ -33,6 +37,8 @@ Route::get('/publisher/edit/{id}', 'PublisherController@edit')
     ->name('publisher.edit');
 Route::patch('/publisher/update/{id}', 'PublisherController@update')
     ->name('publisher.update');
+Route::get('/publisher/select', 'PublisherController@select')
+    ->name('publisher.select');
 
 // Author routes
 Route::get('/author/create', 'AuthorController@create')
@@ -65,6 +71,8 @@ Route::get('/shelf/edit/{id}', 'ShelfController@edit')
     ->name('shelf.edit');
 Route::patch('/shelf/update/{id}', 'ShelfController@update')
     ->name('shelf.update');
+Route::get('/shelf/select', 'ShelfController@select')
+    ->name('shelf.select');
 
 // Tag routes
 Route::get('/tag/create', 'TagController@create')

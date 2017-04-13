@@ -69,7 +69,7 @@ body {
         margin-left: .65em; }
 
 form {
-  margin: 10% auto 0;
+  margin: 5% auto 0;
   width: 450px; }
   form ::-webkit-input-placeholder {
     color: #17e8a6; }

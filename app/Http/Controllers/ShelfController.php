@@ -91,6 +91,27 @@ class ShelfController extends Controller
     }
 
     /**
+     * Handle Select2 request on application.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function select(Request $request)
+    {
+        $results = [];
+        $shelves = $this->shelf->getByName($request->shelf);
+
+        foreach ($shelves as $shelf) {
+            $results['shelves'][] = [
+                'id' => $shelf->id,
+                'text' => $shelf->name
+            ];
+        }
+
+        return response()->json($results);
+    }
+
+    /**
      * Validate input.
      *
      * @param array $data

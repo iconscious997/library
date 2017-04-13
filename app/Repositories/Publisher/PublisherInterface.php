@@ -28,4 +28,12 @@ interface PublisherInterface
      * @return bool
      */
     public function update(int $id, array $data);
+
+    /**
+     * Get publisher by name.
+     *
+     * @param string $name
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public function getByName(string $name);
 }

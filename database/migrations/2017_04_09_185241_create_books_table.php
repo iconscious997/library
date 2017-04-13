@@ -18,9 +18,11 @@ class CreateBooksTable extends Migration
             $table->unsignedInteger('publisher_id');
             $table->unsignedInteger('medium_id');
             $table->string('name', 255);
+            $table->string('slug', 255);
             $table->text('description')->nullable();
-            $table->date('year');
-            $table->integer('isbn');
+            $table->integer('year');
+            $table->integer('isbn')->nullable();
+            $table->timestamps();
 
             // Relationships
             $table->foreign('publisher_id')->references('id')->on('publishers');

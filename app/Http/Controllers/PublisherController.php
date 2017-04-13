@@ -91,6 +91,27 @@ class PublisherController extends Controller
     }
 
     /**
+     * Handle Select2 request on application.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function select(Request $request)
+    {
+        $results = [];
+        $publishers = $this->publisher->getByName($request->publisher);
+
+        foreach ($publishers as $publisher) {
+            $results['publishers'][] = [
+                'id' => $publisher->id,
+                'text' => $publisher->name
+            ];
+        }
+
+        return response()->json($results);
+    }
+
+    /**
      * Validate data which should be stored.
      *
      * @param array $data
