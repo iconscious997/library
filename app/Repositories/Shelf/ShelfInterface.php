@@ -9,7 +9,7 @@ interface ShelfInterface
      * Create new shelf row.
      *
      * @param array $data
-     * @return \Illuminate\Database\Eloquent\Model
+     * @return \Illuminate\Database\Eloquent\Model|\App\Shelf
      */
     public function store(array $data);
 
@@ -26,7 +26,7 @@ interface ShelfInterface
      *
      * @param array $data
      * @param int $id
-     * @return bool
+     * @return bool|\App\Shelf|\Illuminate\Database\Eloquent\Model
      */
     public function update(array $data, int $id);
 
@@ -34,7 +34,7 @@ interface ShelfInterface
      * Get shelf by name.
      *
      * @param string $name
-     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     * @return \Illuminate\Database\Eloquent\Collection|static[]|\App\Shelf
      */
     public function getByName(string $name);
 }

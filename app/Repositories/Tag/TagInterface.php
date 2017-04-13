@@ -8,7 +8,7 @@ interface TagInterface
      * Create new shelf row.
      *
      * @param array $data
-     * @return \Illuminate\Database\Eloquent\Model
+     * @return \Illuminate\Database\Eloquent\Model|\App\Tag
      */
     public function store(array $data);
 
@@ -25,7 +25,7 @@ interface TagInterface
      *
      * @param array $data
      * @param int $id
-     * @return bool
+     * @return bool|\App\Tag|\Illuminate\Database\Eloquent\Model
      */
     public function update(array $data, int $id);
 
@@ -33,7 +33,7 @@ interface TagInterface
      * Get tag by name.
      *
      * @param string $name
-     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     * @return \Illuminate\Database\Eloquent\Collection|static[]|\App\Tag
      */
     public function getByName(string $name);
 }

@@ -9,7 +9,7 @@ interface MediumInterface
      * Create new medium row.
      *
      * @param array $data
-     * @return \Illuminate\Database\Eloquent\Model
+     * @return \Illuminate\Database\Eloquent\Model|\App\Medium
      */
     public function store(array $data);
 
@@ -26,14 +26,14 @@ interface MediumInterface
      *
      * @param array $data
      * @param int $id
-     * @return bool
+     * @return bool|\App\Medium|\Illuminate\Database\Eloquent\Model
      */
     public function update(array $data, int $id);
 
     /**
      * List all stored mediums.
      *
-     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     * @return \Illuminate\Database\Eloquent\Collection|static[]|\App\Medium
      */
     public function all();
 }

@@ -8,7 +8,7 @@ interface PublisherInterface
      * Create new publisher record in database.
      *
      * @param array $data
-     * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Support\MessageBag
+     * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Support\MessageBag|\App\Publisher
      */
     public function store(array $data);
 
@@ -25,7 +25,7 @@ interface PublisherInterface
      *
      * @param int $id
      * @param array $data
-     * @return bool
+     * @return bool|\App\Publisher|\Illuminate\Database\Eloquent\Model
      */
     public function update(int $id, array $data);
 
@@ -33,7 +33,7 @@ interface PublisherInterface
      * Get publisher by name.
      *
      * @param string $name
-     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     * @return \Illuminate\Database\Eloquent\Collection|static[]|\App\Publisher
      */
     public function getByName(string $name);
 }

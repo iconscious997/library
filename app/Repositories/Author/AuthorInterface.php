@@ -9,7 +9,7 @@ interface AuthorInterface
      * Create new author in DB.
      *
      * @param array $data
-     * @return \Illuminate\Database\Eloquent\Model
+     * @return \App\Author|\Illuminate\Database\Eloquent\Model
      */
     public function store(array $data);
 
@@ -26,7 +26,7 @@ interface AuthorInterface
      *
      * @param array $data
      * @param int $id
-     * @return bool
+     * @return bool|\App\Author|\Illuminate\Database\Eloquent\Model
      */
     public function update(array $data, int $id);
 
@@ -34,7 +34,7 @@ interface AuthorInterface
      * Get author by name.
      *
      * @param string $name
-     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     * @return \Illuminate\Database\Eloquent\Collection|static[]|\App\Author
      */
     public function getByName(string $name);
 }
