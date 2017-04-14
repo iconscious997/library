@@ -10,7 +10,7 @@ class TagEloquentRepository implements TagInterface
      * Create new medium row.
      *
      * @param array $data
-     * @return \Illuminate\Database\Eloquent\Model
+     * @return \App\Tag|\Illuminate\Database\Eloquent\Model
      */
     public function store(array $data)
     {
@@ -31,11 +31,23 @@ class TagEloquentRepository implements TagInterface
     }
 
     /**
+     * Find tag by it's slug.
+     *
+     * @param string $slug
+     * @return \App\Tag|\Illuminate\Database\Eloquent\Model
+     */
+    public function findSlug(string $slug)
+    {
+        return Tag::where('slug', $slug)
+            ->first();
+    }
+
+    /**
      * Update medium row in db.
      *
      * @param array $data
      * @param int $id
-     * @return bool
+     * @return bool|\App\Tag|\Illuminate\Database\Eloquent\Model
      */
     public function update(array $data, int $id)
     {

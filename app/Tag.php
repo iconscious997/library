@@ -45,7 +45,7 @@ class Tag extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function book()
+    public function books()
     {
         return $this->belongsToMany('App\Book', 'book_tag', 'tag_id', 'book_id');
     }

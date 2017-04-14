@@ -25,6 +25,19 @@ class TagController extends Controller
     }
 
     /**
+     * Show all books contained in tag.
+     *
+     * @param string $slug
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function show(string $slug)
+    {
+        $tag = $this->tag->findSlug($slug);
+
+        return view('tag.list', compact('tag'));
+    }
+
+    /**
      * Show medium create page.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View

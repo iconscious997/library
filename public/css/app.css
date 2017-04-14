@@ -198,6 +198,11 @@ form {
       color: #0e171a;
       outline: none; }
 
+#search-form {
+  width: 100%; }
+  #search-form input {
+    width: 100%; }
+
 #sign-up,
 #sign-in {
   margin: 10% auto 0;

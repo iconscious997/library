@@ -21,6 +21,14 @@ interface TagInterface
     public function find(int $id);
 
     /**
+     * Find tag by it's slug.
+     *
+     * @param string $slug
+     * @return \App\Tag|\Illuminate\Database\Eloquent\Model
+     */
+    public function findSlug(string $slug);
+
+    /**
      * Update shelf row in db.
      *
      * @param array $data

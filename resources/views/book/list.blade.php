@@ -18,7 +18,7 @@
             @foreach($books as $book)
                 <tr>
                     <td>
-                        <a href="#{{ $book->slug }}" class="book-name">
+                        <a href="{{ route('book.single', ['slug' => $book->slug]) }}" class="book-name">
                             {{ $book->name }}
                         </a>
                     </td>
@@ -36,7 +36,7 @@
                     </td>
                     <td>
                         @foreach($book->tags as $tag)
-                            <a href="{{ $tag->slug }}">{{ $tag->name }}</a>
+                            <a href="{{ route('tag.show', ['slug' => $tag->slug]) }}">{{ $tag->name }}</a>
                         @endforeach
                     </td>
                 </tr>

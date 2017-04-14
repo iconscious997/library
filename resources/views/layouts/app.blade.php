@@ -42,6 +42,10 @@
     </header>
 
     <section id="content" class="@yield('content-class')">
+        <form action="{{ route('book.search') }}" method="get" id="search-form">
+            <input type="search" name="query" placeholder="{{ trans('search.search-books') }}">
+        </form>
+
         @yield('content')
     </section>
 

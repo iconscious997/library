@@ -26,6 +26,10 @@ Route::get('/book/edit/{id}', 'BookController@edit')
     ->name('book.edit');
 Route::patch('/book/update/{id}', 'BookController@update')
     ->name('book.update');
+Route::get('/book/search', 'BookController@search')
+    ->name('book.search');
+Route::get('/book/{slug}', 'BookController@show')
+    ->name('book.single');
 
 // Publisher routes
 Route::get('/publisher/create', 'PublisherController@create')
@@ -84,3 +88,5 @@ Route::patch('/tag/update/{id}', 'TagController@update')
     ->name('tag.update');
 Route::get('/tag/select', 'TagController@select')
     ->name('tag.select');
+Route::get('/tag/{slug}', 'TagController@show')
+    ->name('tag.show');
