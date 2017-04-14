@@ -2,15 +2,52 @@
     @include paragraph;
     margin: 2em 0 0 0;
 
+    a {
+        color: $black;
+        text-decoration: none;
+
+        &:active,
+        &:hover,
+        &:focus {
+            color: $green500;
+        }
+
+        &.book-name {
+            text-decoration: underline;
+        }
+    }
+
     table {
+        border-collapse: collapse;
         width: 100%;
+    }
+
+    thead {
+        border-bottom: 3px solid $black;
     }
 
     th {
         text-align: left;
+
+        &.book-name {
+            width: 35%;
+        }
+        &.book-author {
+            width: 11%;
+        }
+        &.book-publisher {
+            width: 15%;
+        }
+        &.book-medium {
+            width: 8%;
+        }
+        &.book-shelf {
+            width: 11%;
+        }
     }
 
     td, th {
         padding: .5em 0;
     }
+
 }

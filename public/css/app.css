@@ -282,9 +282,37 @@ form {
   margin: 2em 0 0 0; }
   .wf-varelaround-n4-active .list {
     font-family: "Varela Round", Arial, serif; }
+  .list a {
+    color: #0e171a;
+    text-decoration: none; }
+    .list a:active, .list a:hover, .list a:focus {
+      color: #17e8a6; }
+    .list a.book-name {
+      text-decoration: underline; }
   .list table {
+    border-collapse: collapse;
     width: 100%; }
+  .list thead {
+    border-bottom: 3px solid #0e171a; }
   .list th {
     text-align: left; }
+    .list th.book-name {
+      width: 35%; }
+    .list th.book-author {
+      width: 11%; }
+    .list th.book-publisher {
+      width: 15%; }
+    .list th.book-medium {
+      width: 8%; }
+    .list th.book-shelf {
+      width: 11%; }
   .list td, .list th {
     padding: .5em 0; }
+
+#pagination {
+  list-style: none;
+  margin: 2em 0 0 0;
+  padding: 0; }
+  #pagination li {
+    color: #17e8a6;
+    display: inline-block; }

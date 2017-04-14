@@ -32,6 +32,11 @@ class BookController extends Controller
         $this->medium = $medium;
     }
 
+    /**
+     * Show book index.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         $books = $this->book->paginate(20);
