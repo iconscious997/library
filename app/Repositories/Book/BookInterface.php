@@ -28,4 +28,12 @@ interface BookInterface
      * @return \App\Book|\Illuminate\Database\Eloquent\Model|bool
      */
     public function update(array $data, int $id);
+
+    /**
+     * Paginate books from database.
+     *
+     * @param int $limit
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public function paginate(int $limit);
 }

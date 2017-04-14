@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'BookController@index')
+    ->name('home');
 
 // User routes
 Auth::routes();

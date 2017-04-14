@@ -42,4 +42,15 @@ class BookEloquentRepository implements BookInterface
 
         return $book;
     }
+
+    /**
+     * Paginate books from database.
+     *
+     * @param int $limit
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public function paginate(int $limit)
+    {
+        return Book::paginate($limit);
+    }
 }

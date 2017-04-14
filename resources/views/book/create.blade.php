@@ -92,10 +92,12 @@
 
 @section('javascript')
     <script>
+
         // Book authors
         $('#book-authors').select2({
             language: '{{ config('app.locale') }}',
             minimumInputLength: 3,
+            theme: 'library',
             minimumResultsForSearch: Infinity,
             allowClear: true,
             placeholder: " ",

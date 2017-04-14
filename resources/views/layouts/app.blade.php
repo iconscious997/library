@@ -11,8 +11,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/normalize.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/select2.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/select2.css') }}" rel="stylesheet">
 
     <title>{{ config('app.name', 'Library') }}</title>
 </head>
@@ -41,13 +41,13 @@
         </section>
     </header>
 
-    <section id="content">
+    <section id="content" class="@yield('content-class')">
         @yield('content')
     </section>
 
     <script type="text/javascript" src="{{ url('js/jQuery/jquery-3.2.0.min.js') }}"></script>
     <script type="text/javascript" src="{{ url('js/webfontloader/webfontloader.js') }}"></script>
-    <script type="text/javascript" src="{{ url('js/select2/select2.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url('js/select2/select2.full.min.js') }}"></script>
     <script>
         WebFont.load({
             custom: {
@@ -55,6 +55,7 @@
                 urls: ['/css/app.css']
             }
         });
+        $.fn.select2.defaults.set("theme", "library");
     </script>
 
     @yield('javascript')

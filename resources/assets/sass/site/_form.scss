@@ -45,11 +45,12 @@ form {
 
     input {
         @include paragraph;
-        border: none;
-        border-bottom: 1px solid $black;
+        border: 1px solid $black;
+        box-sizing: border-box;
         display: block;
         font-size: 1em;
         margin: 0 0 2em 0;
+        padding: 1em;
         width: 100%;
 
         &:active,
@@ -62,7 +63,7 @@ form {
 
     label {
         @include heading;
-        color: $green700;
+        color: $green300;
         display: block;
         font-size: .85em;
         margin: 0 0 .5em 0;
@@ -107,7 +108,7 @@ form {
         display: block;
         font-size: 1em;
         margin: 0 0 2em 0;
-        padding: .5em;
+        padding: 1em;
         width: 100%;
 
         &:active,

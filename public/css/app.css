@@ -27,7 +27,8 @@ body {
   z-index: 9999; }
 
 #content {
-  padding: 0 0 6em 0; }
+  box-sizing: border-box;
+  padding: 0 2.5em 6em 2.5em; }
 
 #app-header {
   font-family: Arial, serif;
@@ -108,11 +109,12 @@ form {
     margin: -.75em 0 2em 0; }
   form input {
     font-family: Arial, serif;
-    border: none;
-    border-bottom: 1px solid #0e171a;
+    border: 1px solid #0e171a;
+    box-sizing: border-box;
     display: block;
     font-size: 1em;
     margin: 0 0 2em 0;
+    padding: 1em;
     width: 100%; }
     .wf-varelaround-n4-active form input {
       font-family: "Varela Round", Arial, serif; }
@@ -121,7 +123,7 @@ form {
       outline: none; }
   form label {
     font-family: Arial, serif;
-    color: #21ad81;
+    color: #0e8b64;
     display: block;
     font-size: .85em;
     margin: 0 0 .5em 0; }
@@ -158,7 +160,7 @@ form {
     display: block;
     font-size: 1em;
     margin: 0 0 2em 0;
-    padding: .5em;
+    padding: 1em;
     width: 100%; }
     .wf-varelaround-n4-active form textarea {
       font-family: "Varela Round", Arial, serif; }
@@ -207,7 +209,7 @@ form {
   #sign-up label,
   #sign-in label {
     font-family: Arial, serif;
-    color: #21ad81;
+    color: #0e8b64;
     display: block;
     font-size: .85em;
     margin: 0 0 .5em 0; }
@@ -274,3 +276,15 @@ form {
       background-color: #17e8a6;
       color: #0e171a;
       outline: none; }
+
+.list {
+  font-family: Arial, serif;
+  margin: 2em 0 0 0; }
+  .wf-varelaround-n4-active .list {
+    font-family: "Varela Round", Arial, serif; }
+  .list table {
+    width: 100%; }
+  .list th {
+    text-align: left; }
+  .list td, .list th {
+    padding: .5em 0; }

@@ -27,9 +27,16 @@ class BookController extends Controller
      */
     public function __construct(BookInterface $book, MediumInterface $medium)
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('index');
         $this->book = $book;
         $this->medium = $medium;
+    }
+
+    public function index()
+    {
+        $books = $this->book->paginate(20);
+
+        return view('book.list', compact('books'));
     }
 
     /**
