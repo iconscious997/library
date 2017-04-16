@@ -334,6 +334,46 @@ form {
     color: #0e171a;
     margin: 1.5em 0 0 0; }
 
+.single {
+  font-family: Arial, serif;
+  margin: 2em 0 0 0; }
+  .wf-varelaround-n4-active .single {
+    font-family: "Varela Round", Arial, serif; }
+  .single h2.section-title {
+    font-size: 2em;
+    color: #0e171a;
+    margin: 1.5em 0 0 0; }
+  .single h3 {
+    border-bottom: 2px solid #0e171a;
+    padding: 0 0 .5em 0;
+    margin-bottom: 1em; }
+  .single p {
+    margin: 1em 0 3em 0;
+    min-width: 600px;
+    width: 70%; }
+  .single ul {
+    list-style: none;
+    margin: 0 0 2em 0;
+    padding: 0; }
+  .single a {
+    -webkit-transition: color 0.3s, border-color 0.3s, background-color 0.3s;
+    -moz-transition: color 0.3s, border-color 0.3s, background-color 0.3s;
+    -o-transition: color 0.3s, border-color 0.3s, background-color 0.3s;
+    transition: color 0.3s, border-color 0.3s, background-color 0.3s;
+    color: #0e171a;
+    text-decoration: none; }
+    .single a:active, .single a:hover, .single a:focus {
+      color: #17e8a6;
+      outline: none; }
+    .single a.book-name {
+      text-decoration: underline; }
+    .single a.tag {
+      background: #b9f8e4;
+      border: 1px solid #8bf4d2;
+      padding: .5em; }
+      .single a.tag:hover {
+        background: #ffffff; }
+
 #pagination {
   list-style: none;
   margin: 2em 0 0 0;

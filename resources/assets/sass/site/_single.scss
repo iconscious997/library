@@ -1,0 +1,56 @@
+.single {
+    @include paragraph;
+    margin: 2em 0 0 0;
+
+    h2.section-title {
+        font-size: 2em;
+        color: $black;
+        margin: 1.5em 0 0 0;
+    }
+
+    h3 {
+        border-bottom: 2px solid $black;
+        padding: 0 0 .5em 0;
+        margin-bottom: 1em;
+    }
+
+    p {
+        margin: 1em 0 3em 0;
+        min-width: 600px;
+        width: 70%;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0 0 2em 0;
+        padding: 0;
+    }
+
+    a {
+        @include transitions(color .3s, border-color .3s, background-color .3s);
+        color: $black;
+        text-decoration: none;
+
+        &:active,
+        &:hover,
+        &:focus {
+            color: $green500;
+            outline: none;
+        }
+
+        &.book-name {
+            text-decoration: underline;
+        }
+
+        &.tag {
+            background: $green850;
+            border: 1px solid $green750;
+            padding: .5em;
+
+            &:hover {
+                background: $white;
+            }
+        }
+    }
+
+}
