@@ -22,6 +22,14 @@ interface AuthorInterface
     public function find(int $id);
 
     /**
+     * Find author by it's slug.
+     *
+     * @param string $slug
+     * @return \App\Author|\Illuminate\Database\Eloquent\Model
+     */
+    public function findSlug(string $slug);
+
+    /**
      * Update author row in DB.
      *
      * @param array $data

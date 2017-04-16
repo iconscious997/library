@@ -27,6 +27,15 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Book wherePublisherId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Book whereYear($value)
  * @mixin \Eloquent
+ * @property string $slug
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Author[] $authors
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Shelf[] $shelves
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Tag[] $tags
+ * @method static \Illuminate\Database\Query\Builder|\App\Book whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Book whereSlug($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Book whereUpdatedAt($value)
  */
 class Book extends Model
 {

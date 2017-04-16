@@ -31,6 +31,18 @@ class PublisherEloquentRepository implements PublisherInterface
     }
 
     /**
+     * Find tag by it's slug.
+     *
+     * @param string $slug
+     * @return \App\Publisher|\Illuminate\Database\Eloquent\Model
+     */
+    public function findSlug(string $slug)
+    {
+        return Publisher::where('slug', $slug)
+            ->first();
+    }
+
+    /**
      * Update publisher record in database.
      *
      * @param int $id

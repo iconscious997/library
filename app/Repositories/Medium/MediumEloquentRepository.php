@@ -31,6 +31,18 @@ class MediumEloquentRepository implements MediumInterface
     }
 
     /**
+     * Find medium by it's slug.
+     *
+     * @param string $slug
+     * @return \App\Medium|\Illuminate\Database\Eloquent\Model
+     */
+    public function findSlug(string $slug)
+    {
+        return Medium::where('slug', $slug)
+            ->first();
+    }
+
+    /**
      * Update medium row in db.
      *
      * @param array $data

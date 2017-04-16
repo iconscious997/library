@@ -1,7 +1,7 @@
 #app-header {
     @include paragraph();
     box-sizing: border-box;
-    padding: 2em 3.5em 0 2.5em;
+    padding: 3em 3.5em 0 3.5em;
 
     h1 {
         color: $black;
@@ -42,6 +42,14 @@
             &:last-of-type {
                 margin-left: .65em;
             }
+        }
+    }
+
+    #search-form {
+        margin: 2em 0 0 0;
+
+        input {
+            border-width: 2px;
         }
     }
 }

@@ -20,7 +20,7 @@ class TagController extends Controller
      */
     public function __construct(TagInterface $tag)
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('show');
         $this->tag = $tag;
     }
 
@@ -32,9 +32,10 @@ class TagController extends Controller
      */
     public function show(string $slug)
     {
-        $tag = $this->tag->findSlug($slug);
+        $section = $this->tag->findSlug($slug);
+        $books = $section->books()->paginate($this->limit);
 
-        return view('tag.list', compact('tag'));
+        return view('book.list', compact('section', 'books'));
     }
 
     /**

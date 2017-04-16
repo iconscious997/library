@@ -17,6 +17,10 @@ Route::get('/', 'BookController@index')
 // User routes
 Auth::routes();
 
+// Search
+Route::get('/book/search', 'SearchController@search')
+    ->name('book.search');
+
 // Book routes
 Route::get('/book/create', 'BookController@create')
     ->name('book.create');
@@ -26,8 +30,6 @@ Route::get('/book/edit/{id}', 'BookController@edit')
     ->name('book.edit');
 Route::patch('/book/update/{id}', 'BookController@update')
     ->name('book.update');
-Route::get('/book/search', 'BookController@search')
-    ->name('book.search');
 Route::get('/book/{slug}', 'BookController@show')
     ->name('book.single');
 
@@ -42,6 +44,8 @@ Route::patch('/publisher/update/{id}', 'PublisherController@update')
     ->name('publisher.update');
 Route::get('/publisher/select', 'PublisherController@select')
     ->name('publisher.select');
+Route::get('/publisher/{slug}', 'PublisherController@show')
+    ->name('publisher.show');
 
 // Author routes
 Route::get('/author/create', 'AuthorController@create')
@@ -54,6 +58,8 @@ Route::patch('/author/update/{id}', 'AuthorController@update')
     ->name('author.update');
 Route::get('/author/select', 'AuthorController@select')
     ->name('author.select');
+Route::get('/author/{slug}', 'AuthorController@show')
+    ->name('author.show');
 
 // Medium routes
 Route::get('/medium/create', 'MediumController@create')
@@ -64,6 +70,8 @@ Route::get('/medium/edit/{id}', 'MediumController@edit')
     ->name('medium.edit');
 Route::patch('/medium/update/{id}', 'MediumController@update')
     ->name('medium.update');
+Route::get('/medium/{slug}', 'MediumController@show')
+    ->name('medium.show');
 
 // Shelf routes
 Route::get('/shelf/create', 'ShelfController@create')
@@ -76,6 +84,8 @@ Route::patch('/shelf/update/{id}', 'ShelfController@update')
     ->name('shelf.update');
 Route::get('/shelf/select', 'ShelfController@select')
     ->name('shelf.select');
+Route::get('/shelf/{slug}', 'ShelfController@show')
+    ->name('shelf.show');
 
 // Tag routes
 Route::get('/tag/create', 'TagController@create')

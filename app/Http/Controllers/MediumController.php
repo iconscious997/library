@@ -20,7 +20,7 @@ class MediumController extends Controller
      */
     public function __construct(MediumInterface $medium)
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('show');
         $this->medium = $medium;
     }
 
@@ -32,6 +32,20 @@ class MediumController extends Controller
     public function create()
     {
         return view('medium.create');
+    }
+
+    /**
+     * Show all books contained in tag.
+     *
+     * @param string $slug
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function show(string $slug)
+    {
+        $section = $this->medium->findSlug($slug);
+        $books = $section->books()->paginate($this->limit);
+
+        return view('book.list', compact('section', 'books'));
     }
 
     /**

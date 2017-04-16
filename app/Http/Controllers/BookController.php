@@ -45,23 +45,6 @@ class BookController extends Controller
     }
 
     /**
-     * Search for books in db and return index.
-     *
-     * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function search(Request $request)
-    {
-        if ($request->input('query') == null) {
-            return redirect()->route('home');
-        }
-
-        $books = $this->book->findName($request->input('query'), $this->limit);
-
-        return view('book.list', compact('books'));
-    }
-
-    /**
      * Show details about book on it's own page.
      *
      * @param string $slug

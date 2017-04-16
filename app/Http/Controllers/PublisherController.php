@@ -20,8 +20,22 @@ class PublisherController extends Controller
      */
     public function __construct(PublisherInterface $publisher)
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('show');
         $this->publisher = $publisher;
+    }
+
+    /**
+     * Show all books contained in tag.
+     *
+     * @param string $slug
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function show(string $slug)
+    {
+        $section = $this->publisher->findSlug($slug);
+        $books = $section->books()->paginate($this->limit);
+
+        return view('book.list', compact('section', 'books'));
     }
 
     /**

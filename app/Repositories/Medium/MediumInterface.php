@@ -22,6 +22,14 @@ interface MediumInterface
     public function find(int $id);
 
     /**
+     * Find medium by it's slug.
+     *
+     * @param string $slug
+     * @return \App\Medium|\Illuminate\Database\Eloquent\Model
+     */
+    public function findSlug(string $slug);
+
+    /**
      * Update medium row in db.
      *
      * @param array $data

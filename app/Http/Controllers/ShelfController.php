@@ -20,8 +20,22 @@ class ShelfController extends Controller
      */
     public function __construct(ShelfInterface $shelf)
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('show');
         $this->shelf = $shelf;
+    }
+
+    /**
+     * Show all books contained in tag.
+     *
+     * @param string $slug
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function show(string $slug)
+    {
+        $section = $this->shelf->findSlug($slug);
+        $books = $section->books()->paginate($this->limit);
+
+        return view('book.list', compact('section', 'books'));
     }
 
     /**

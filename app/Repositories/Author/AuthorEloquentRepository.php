@@ -32,6 +32,18 @@ class AuthorEloquentRepository implements AuthorInterface
     }
 
     /**
+     * Find author by it's slug.
+     *
+     * @param string $slug
+     * @return \App\Author|\Illuminate\Database\Eloquent\Model
+     */
+    public function findSlug(string $slug)
+    {
+        return Author::where('slug', $slug)
+            ->first();
+    }
+
+    /**
      * Update author row in DB.
      *
      * @param array $data

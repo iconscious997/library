@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $location
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Book[] $book
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Book[] $books
  * @method static \Illuminate\Database\Query\Builder|\App\Publisher whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Publisher whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Publisher whereLocation($value)
@@ -43,9 +43,9 @@ class Publisher extends Model
     /**
      * Retrive books which belongs to publisher.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany|\App\Book
      */
-    public function book()
+    public function books()
     {
         return $this->hasMany('App\Book', 'publisher_id', 'id');
     }

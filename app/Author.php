@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $slug
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Book[] $book
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Book[] $books
  * @method static \Illuminate\Database\Query\Builder|\App\Author whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Author whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Author whereName($value)
@@ -43,9 +43,9 @@ class Author extends Model
     /**
      * Retrive books which were written by this author.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany|\App\Book[]
      */
-    public function book()
+    public function books()
     {
         return $this->belongsToMany('App\Book', 'book_author', 'author_id', 'book_id');
     }

@@ -32,6 +32,18 @@ class ShelfEloquentRepository implements ShelfInterface
     }
 
     /**
+     * Find tag by it's slug.
+     *
+     * @param string $slug
+     * @return \App\Shelf|\Illuminate\Database\Eloquent\Model
+     */
+    public function findSlug(string $slug)
+    {
+        return Shelf::where('slug', $slug)
+            ->first();
+    }
+
+    /**
      * Update medium row in db.
      *
      * @param array $data

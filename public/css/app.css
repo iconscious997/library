@@ -28,12 +28,12 @@ body {
 
 #content {
   box-sizing: border-box;
-  padding: 0 2.5em 6em 2.5em; }
+  padding: 0 3.5em 6em 3.5em; }
 
 #app-header {
   font-family: Arial, serif;
   box-sizing: border-box;
-  padding: 2em 3.5em 0 2.5em; }
+  padding: 3em 3.5em 0 3.5em; }
   .wf-varelaround-n4-active #app-header {
     font-family: "Varela Round", Arial, serif; }
   #app-header h1 {
@@ -68,9 +68,13 @@ body {
         color: #17e8a6; }
       #app-header #user-panel a:last-of-type {
         margin-left: .65em; }
+  #app-header #search-form {
+    margin: 2em 0 0 0; }
+    #app-header #search-form input {
+      border-width: 2px; }
 
 form {
-  margin: 5% auto 0;
+  margin: 0 auto 0;
   width: 450px; }
   form ::-webkit-input-placeholder {
     color: #17e8a6; }
@@ -108,6 +112,10 @@ form {
   form .select-group {
     margin: -.75em 0 2em 0; }
   form input {
+    -webkit-transition: border-color 0.3s, color 0.3s;
+    -moz-transition: border-color 0.3s, color 0.3s;
+    -o-transition: border-color 0.3s, color 0.3s;
+    transition: border-color 0.3s, color 0.3s;
     font-family: Arial, serif;
     border: 1px solid #0e171a;
     box-sizing: border-box;
@@ -295,11 +303,17 @@ form {
     .list a.book-name {
       text-decoration: underline; }
   .list table {
+    border: 1px solid #0e171a;
     border-collapse: collapse;
     width: 100%; }
   .list thead {
-    border-bottom: 3px solid #0e171a; }
+    background: #0e171a;
+    color: #ffffff;
+    font-weight: 400; }
   .list th {
+    font-size: .95em;
+    font-weight: normal;
+    padding: 1em;
     text-align: left; }
     .list th.book-name {
       width: 35%; }
@@ -311,8 +325,14 @@ form {
       width: 8%; }
     .list th.book-shelf {
       width: 11%; }
-  .list td, .list th {
-    padding: .5em 0; }
+  .list tbody tr:nth-child(even) {
+    background: #e7eff2; }
+  .list td {
+    padding: 1em; }
+  .list h2.section-title {
+    font-size: 2em;
+    color: #0e171a;
+    margin: 1.5em 0 0 0; }
 
 #pagination {
   list-style: none;

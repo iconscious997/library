@@ -1,6 +1,6 @@
 form {
     @include placeholder($green500);
-    margin: 5% auto 0;
+    margin: 0 auto 0;
     width: 450px;
 
     h1 {
@@ -44,6 +44,7 @@ form {
     }
 
     input {
+        @include transitions(border-color .3s, color .3s);
         @include paragraph;
         border: 1px solid $black;
         box-sizing: border-box;

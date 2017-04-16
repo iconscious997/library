@@ -21,6 +21,14 @@ interface PublisherInterface
     public function find(int $id);
 
     /**
+     * Find tag by it's slug.
+     *
+     * @param string $slug
+     * @return \App\Publisher|\Illuminate\Database\Eloquent\Model
+     */
+    public function findSlug(string $slug);
+
+    /**
      * Update publisher record in database.
      *
      * @param int $id

@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $slug
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Book[] $book
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Book[] $books
  * @method static \Illuminate\Database\Query\Builder|\App\Shelf whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Shelf whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Shelf whereName($value)
@@ -43,7 +43,7 @@ class Shelf extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function book()
+    public function books()
     {
         return $this->belongsToMany('App\Book', 'book_shelf', 'shelf_id', 'book_id');
     }

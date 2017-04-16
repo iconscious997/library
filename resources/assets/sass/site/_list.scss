@@ -18,15 +18,21 @@
     }
 
     table {
+        border: 1px solid $black;
         border-collapse: collapse;
         width: 100%;
     }
 
     thead {
-        border-bottom: 3px solid $black;
+        background: $black;
+        color: $white;
+        font-weight: 400;
     }
 
     th {
+        font-size: .95em;
+        font-weight: normal;
+        padding: 1em;
         text-align: left;
 
         &.book-name {
@@ -46,8 +52,21 @@
         }
     }
 
-    td, th {
-        padding: .5em 0;
+    tbody {
+        tr {
+            &:nth-child(even) {
+                background: lighten($black, 85%);
+            }
+        }
     }
 
+    td {
+        padding: 1em;
+    }
+
+    h2.section-title {
+        font-size: 2em;
+        color: $black;
+        margin: 1.5em 0 0 0;
+    }
 }

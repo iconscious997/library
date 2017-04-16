@@ -3,8 +3,10 @@
 @section('content-class', 'list')
 
 @section('content')
-    {{ $tag->name }}<br>
-    {{ $tag->description }}
+    @if(isset($section->name))
+        <h2 class="section-title">{{ $section->name }}</h2>
+        <p>{{ $section->description or ' ' }}</p>
+    @endif
 
     <table>
         <thead>
@@ -18,7 +20,7 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($tag->books as $book)
+        @foreach($books as $book)
             <tr>
                 <td>
                     <a href="{{ route('book.single', ['slug' => $book->slug]) }}" class="book-name">
@@ -30,7 +32,7 @@
                         <a href="#{{ $author->slug }}">{{ $author->name .' '. $author->surname }}</a>
                     @endforeach
                 </td>
-                <td><a href="{{ $book->publisher->slug }}">{{ $book->publisher->name }}</a></td>
+                <td><a href="{{ route('publisher.show', ['slug' => $book->publisher->slug]) }}">{{ $book->publisher->name }}</a></td>
                 <td><a href="{{ $book->medium->slug }}">{{ $book->medium->name }}</a></td>
                 <td>
                     @foreach($book->shelves as $shelf)
@@ -46,4 +48,6 @@
         @endforeach
         </tbody>
     </table>
+
+    {!! $books->render('layouts.pagination') !!}
 @endsection
