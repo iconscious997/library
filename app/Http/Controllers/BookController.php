@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\Book\BookInterface;
 use App\Repositories\Medium\MediumInterface;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class BookController extends Controller
@@ -160,7 +161,10 @@ class BookController extends Controller
 
             // Attach tags to book
             if ($book->id) {
-                $book->tags()->sync($request->input('tags'));
+                $tags = resolve('App\Repositories\Tag\TagInterface');
+                $tags = $tags->create($request->input('tags'));
+
+                $book->tags()->sync($tags);
             }
 
             // Attach shelves to book

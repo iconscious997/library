@@ -44,4 +44,12 @@ interface TagInterface
      * @return \Illuminate\Database\Eloquent\Collection|static[]|\App\Tag
      */
     public function getByName(string $name);
+
+    /**
+     * Create new tag and store it in databse.
+     *
+     * @param array $tags
+     * @return int|array
+     */
+    public function create(array $tags);
 }

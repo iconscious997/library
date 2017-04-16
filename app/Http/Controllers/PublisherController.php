@@ -41,10 +41,15 @@ class PublisherController extends Controller
     /**
      * Show application page for creating new publisher.
      *
+     * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create()
+    public function create(Request $request)
     {
+        if ($request->ajax()) {
+            return view('publisher.partials.create');
+        }
+
         return view('publisher.create');
     }
 
@@ -63,7 +68,11 @@ class PublisherController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         } else {
-            $this->publisher->store($request->all());
+            $publisher = $this->publisher->store($request->all());
+
+            if ($request->ajax()) {
+                return response()->json($publisher);
+            }
 
             return redirect()->route('publisher.create');
         }

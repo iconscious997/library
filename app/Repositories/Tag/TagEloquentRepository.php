@@ -68,4 +68,46 @@ class TagEloquentRepository implements TagInterface
             ->limit(15)
             ->get();
     }
+
+    /**
+     * Create new tag and store it in databse.
+     *
+     * @param array $tags
+     * @return int|array
+     */
+    public function create(array $tags)
+    {
+        foreach ($tags as $tag) {
+            // Check if tag is numeric and can be found.
+            if (! (is_numeric($tag) && $this->find($tag))) {
+                // Unset tag if it's not an existing ID.
+                if (($key = array_search($tag, $tags)) !== false) {
+                    unset($tags[$key]);
+                }
+
+                // Find tag by slug or ID.
+                $tags[] = $this->findOrCreate($tag);
+            }
+        }
+
+        return $tags;
+    }
+
+    /**
+     * Resolve if tag exists, otherwise create new.
+     *
+     * @param string|int $tag
+     * @return int
+     */
+    protected function findOrCreate($tag)
+    {
+        $slug = str_slug($tag);
+        $existing = $this->findSlug($slug);
+
+        if (isset($existing->slug)) {
+            return $existing->id;
+        } else {
+            return $this->store(['name' => $tag])->id;
+        }
+    }
 }

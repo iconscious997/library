@@ -13,11 +13,16 @@
     <link href="{{ asset('css/normalize.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/select2.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
 
     <title>{{ config('app.name', 'Library') }}</title>
 </head>
 <body>
     <section id="site-border">
+    </section>
+
+    <section id="window">
+        <div id="window-creator"></div>
     </section>
 
     <header id="app-header">

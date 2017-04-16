@@ -1,7 +1,27 @@
 form {
-    @include placeholder($green500);
+    @include placeholder(lighten($black, 70%));
     margin: 0 auto 0;
     width: 450px;
+    &.long {
+        width: 100%;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+
+    .column {
+        flex-grow: 0;
+        flex-basis: 100%;
+        margin: 0 0 0 3em;
+        order: 0;
+        width: 50%;
+        &:first-of-type {
+            margin: 0;
+        }
+    }
 
     h1 {
         @include paragraph;
@@ -10,6 +30,17 @@ form {
 
     .edit-subject {
         color: $green500;
+    }
+
+    .editor-button {
+        cursor: pointer;
+        margin: 0 0 0 .5em;
+
+        &:active,
+        &:hover,
+        &:focus {
+            color: $green500;
+        }
     }
 
     .has-error {
@@ -36,11 +67,11 @@ form {
     }
 
     .checkbox-group {
-        margin: -.75em 0 2em 0;
+        margin: 0 0 3.25em 0;
     }
 
     .select-group {
-        margin: -.75em 0 2em 0;
+        margin: 0 0 2em 0;
     }
 
     input {
@@ -66,8 +97,8 @@ form {
         @include heading;
         color: $green300;
         display: block;
-        font-size: .85em;
-        margin: 0 0 .5em 0;
+        font-size: .9em;
+        margin: .5em 0 .5em 0;
 
         &.checkbox {
             @include paragraph;

@@ -41,10 +41,15 @@ class ShelfController extends Controller
     /**
      * Show medium create page.
      *
+     * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create()
+    public function create(Request $request)
     {
+        if ($request->ajax()) {
+            return view('shelf.partials.create');
+        }
+
         return view('shelf.create');
     }
 
@@ -52,7 +57,7 @@ class ShelfController extends Controller
      * Handle application store request.
      *
      * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return array|\Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
@@ -64,6 +69,10 @@ class ShelfController extends Controller
                 ->withInput();
         } else {
             $shelf = $this->shelf->store($request->all());
+
+            if ($request->ajax()) {
+                return response()->json($shelf);
+            }
 
             return redirect()->route('shelf.edit', ['id' => $shelf->id]);
         }

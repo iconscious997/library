@@ -1,8 +1,14 @@
 .select2-selection--single {
     background-color: $white;
     border: 1px solid $black;
-    font-size: .9em;
-    height: 2.5em;
+    font-size: 1em;
+    padding: 1em;
+    height: 3.4em;
+
+    input {
+        margin: 0;
+        padding: 0;
+    }
 
     &:active,
     &:focus,
@@ -13,28 +19,28 @@
 
     .select2-selection__rendered {
         color: $black;
-        line-height: 1em;
-        padding: .75em;
+        line-height: 1.3em;
+        padding: 0;
     }
 
     .select2-selection__clear {
         cursor: pointer;
         position: absolute;
-        right: 2em;
+        right: 3em;
         font-weight: bold;
     }
 
     .select2-selection__placeholder {
-        color: #999;
+        color: lighten($black, 70%);
     }
 
     .select2-selection__arrow {
-        height: 26px;
+        height: 3.1em;
 
         position: absolute;
 
         top: 4px;
-        right: 3px;
+        right: 1em;
 
         width: 20px;
 
@@ -83,9 +89,10 @@
 
 &.select2-container--open {
     .select2-selection--single {
+        border-color: $green500;
         .select2-selection__arrow {
             b {
-                border-color: transparent transparent $green300 transparent;
+                border-color: transparent transparent $green500 transparent;
                 border-width: 0 4px 5px 4px;
             }
         }

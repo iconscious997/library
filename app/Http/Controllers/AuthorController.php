@@ -43,10 +43,15 @@ class AuthorController extends Controller
      * Show author creation page.
      *
      * @method GET
+     * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create()
+    public function create(Request $request)
     {
+        if ($request->ajax()) {
+            return view('author.partials.create');
+        }
+
         return view('author.create');
     }
 
@@ -66,7 +71,13 @@ class AuthorController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         } else {
-            $this->author->store($request->all());
+            $author = $this->author->store($request->all());
+
+            if ($request->ajax()) {
+                $author->name = $author->name .' '. $author->surname;
+
+                return response()->json($author);
+            }
 
             return redirect('/');
         }

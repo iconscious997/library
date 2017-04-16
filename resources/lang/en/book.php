@@ -47,4 +47,15 @@ return [
     'edit-button' => 'Update',
     'edit-link'   => 'Edit book',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Book Editor Language Lines
+    |--------------------------------------------------------------------------
+    |
+    | ...
+    |
+    */
+
+    'tag-add-description' => 'You can create new tags by separating them with comma.',
+
 ];

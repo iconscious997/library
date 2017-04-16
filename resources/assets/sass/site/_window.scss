@@ -1,0 +1,18 @@
+#window {
+    background: transparentize($black, .15);
+    display: none;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    width: 100%;
+    z-index: 999;
+
+    .window-creator {
+        background: $white;
+        box-sizing: border-box;
+        margin: 10% auto;
+        min-height: 150px;
+        width: 500px;
+    }
+}

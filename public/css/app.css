@@ -77,15 +77,29 @@ form {
   margin: 0 auto 0;
   width: 450px; }
   form ::-webkit-input-placeholder {
-    color: #17e8a6; }
+    color: #b6cfd7; }
   form :-moz-placeholder {
-    color: #17e8a6;
+    color: #b6cfd7;
     opacity: 1; }
   form ::-moz-placeholder {
-    color: #17e8a6;
+    color: #b6cfd7;
     opacity: 1; }
   form :-ms-input-placeholder {
-    color: #17e8a6; }
+    color: #b6cfd7; }
+  form.long {
+    width: 100%; }
+  form .container {
+    display: flex;
+    flex-direction: row;
+    width: 100%; }
+  form .column {
+    flex-grow: 0;
+    flex-basis: 100%;
+    margin: 0 0 0 3em;
+    order: 0;
+    width: 50%; }
+    form .column:first-of-type {
+      margin: 0; }
   form h1 {
     font-family: Arial, serif;
     margin: 1em 0 1em 0; }
@@ -93,6 +107,11 @@ form {
       font-family: "Varela Round", Arial, serif; }
   form .edit-subject {
     color: #17e8a6; }
+  form .editor-button {
+    cursor: pointer;
+    margin: 0 0 0 .5em; }
+    form .editor-button:active, form .editor-button:hover, form .editor-button:focus {
+      color: #17e8a6; }
   form .has-error input {
     border-color: #b44343; }
     form .has-error input:active, form .has-error input:hover, form .has-error input:focus {
@@ -108,9 +127,9 @@ form {
     .wf-oswald-n4-active form .has-error .error-text {
       font-family: Oswald, Arial, serif; }
   form .checkbox-group {
-    margin: -.75em 0 2em 0; }
+    margin: 0 0 3.25em 0; }
   form .select-group {
-    margin: -.75em 0 2em 0; }
+    margin: 0 0 2em 0; }
   form input {
     -webkit-transition: border-color 0.3s, color 0.3s;
     -moz-transition: border-color 0.3s, color 0.3s;
@@ -133,8 +152,8 @@ form {
     font-family: Arial, serif;
     color: #0e8b64;
     display: block;
-    font-size: .85em;
-    margin: 0 0 .5em 0; }
+    font-size: .9em;
+    margin: .5em 0 .5em 0; }
     .wf-oswald-n4-active form label {
       font-family: Oswald, Arial, serif; }
     form label.checkbox {
@@ -373,6 +392,22 @@ form {
       padding: .5em; }
       .single a.tag:hover {
         background: #ffffff; }
+
+#window {
+  background: rgba(14, 23, 26, 0.85);
+  display: none;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  width: 100%;
+  z-index: 999; }
+  #window .window-creator {
+    background: #ffffff;
+    box-sizing: border-box;
+    margin: 10% auto;
+    min-height: 150px;
+    width: 500px; }
 
 #pagination {
   list-style: none;
