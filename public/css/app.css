@@ -342,18 +342,18 @@ form {
   .single h2.section-title {
     font-size: 2em;
     color: #0e171a;
-    margin: 1.5em 0 0 0; }
+    margin: 2em 0 0 0; }
   .single h3 {
     border-bottom: 2px solid #0e171a;
     padding: 0 0 .5em 0;
     margin-bottom: 1em; }
   .single p {
-    margin: 1em 0 3em 0;
+    margin: 1em 0 2em 0;
     min-width: 600px;
     width: 70%; }
   .single ul {
     list-style: none;
-    margin: 0 0 2em 0;
+    margin: 0 0 4em 0;
     padding: 0; }
   .single a {
     -webkit-transition: color 0.3s, border-color 0.3s, background-color 0.3s;

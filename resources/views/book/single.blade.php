@@ -5,14 +5,29 @@
 @section('content')
     <h2 class="section-title">{{ $book->name }}</h2>
 
+    <section class="edit-book">
+        <a href="{{ route('book.edit', ['id' => $book->id]) }}">{{ trans('book.edit-link') }}</a>
+    </section>
+
     <p>{{ $book->description }}</p>
 
     <ul>
         <li>
             <strong>{{ trans('book.author') }}:</strong>
-            @foreach($book->authors as $author)
-                <a href="{{ route('author.show', ['slug' => $author->slug]) }}">{{ $author->name .' '. $author->surname }}</a>
-            @endforeach
+            @php
+                $authorfSeparated = [];
+                foreach($book->authors as $author) {
+                    $authorfSeparated[] = '<a href="'
+                    . route('author.show', ['slug' => $author->slug])
+                    . '">'
+                    .$author->name
+                    .' '
+                    . $author->surname
+                    . '</a>';
+                }
+
+                echo implode(', ', $authorfSeparated);
+            @endphp
         </li>
         <li>
             <strong>{{ trans('book.isbn') }}:</strong>
@@ -28,13 +43,22 @@
         </li>
         <li>
             <strong>{{ trans('book.shelf') }}:</strong>
-            @foreach($book->shelves as $shelf)
-                <a href="{{  route('shelf.show', ['slug' => $shelf->slug]) }}">{{ $shelf->name }}</a>
-            @endforeach
+            @php
+                $shelfSeparated = [];
+                foreach($book->shelves as $shelf) {
+                    $shelfSeparated[] = '<a href="'
+                    . route('shelf.show', ['slug' => $shelf->slug])
+                    . '">'
+                    . $shelf->name
+                    . '</a>';
+                }
+
+                echo implode(', ', $shelfSeparated);
+            @endphp
         </li>
     </ul>
 
-    <h3>{{ trans('book.tags') }}:</h3>
+    <h3>{{ trans('book.tags') }}</h3>
     @foreach($book->tags as $tag)
         <a href="{{ route('tag.show', ['slug' => $tag->slug]) }}" class="tag">{{ $tag->name }}</a>
     @endforeach

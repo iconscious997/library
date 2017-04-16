@@ -100,7 +100,7 @@
         <div class="form-group select-group {{ $errors->has('publisher') ? ' has-error' : '' }}">
             <label for="book-publisher">{{ trans('book.publisher') }}</label>
             <select name="publisher" id="book-publisher" style="width: 100%" required>
-                <option value="{{ $book->id }}" selected>{{ $book->publisher->name }}</option>
+                <option value="{{ $book->publisher->id }}" selected>{{ $book->publisher->name }}</option>
             </select>
         </div>
 

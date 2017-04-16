@@ -28,21 +28,58 @@
                     </a>
                 </td>
                 <td>
-                    @foreach($book->authors as $author)
-                        <a href="{{ route('author.show', ['slug' => $author->slug]) }}">{{ $author->name .' '. $author->surname }}</a>
-                    @endforeach
+                    @php
+                        $authorfSeparated = [];
+                        foreach($book->authors as $author) {
+                            $authorfSeparated[] = '<a href="'
+                            . route('author.show', ['slug' => $author->slug])
+                            . '">'
+                            .$author->name
+                            .' '
+                            . $author->surname
+                            . '</a>';
+                        }
+
+                        echo implode(', ', $authorfSeparated);
+                    @endphp
                 </td>
-                <td><a href="{{ route('publisher.show', ['slug' => $book->publisher->slug]) }}">{{ $book->publisher->name }}</a></td>
-                <td><a href="{{ route('medium.show', ['slug' => $book->medium->slug]) }}">{{ $book->medium->name }}</a></td>
                 <td>
-                    @foreach($book->shelves as $shelf)
-                        <a href="{{  route('shelf.show', ['slug' => $shelf->slug]) }}">{{ $shelf->name }}</a>
-                    @endforeach
+                    <a href="{{ route('publisher.show', ['slug' => $book->publisher->slug]) }}">
+                        {{ $book->publisher->name }}
+                    </a>
                 </td>
                 <td>
-                    @foreach($book->tags as $tag)
-                        <a href="{{ route('tag.show', ['slug' => $tag->slug]) }}">{{ $tag->name }}</a>
-                    @endforeach
+                    <a href="{{ route('medium.show', ['slug' => $book->medium->slug]) }}">
+                        {{ $book->medium->name }}
+                    </a>
+                </td>
+                <td>
+                    @php
+                        $shelfSeparated = [];
+                        foreach($book->shelves as $shelf) {
+                            $shelfSeparated[] = '<a href="'
+                            . route('shelf.show', ['slug' => $shelf->slug])
+                            . '">'
+                            . $shelf->name
+                            . '</a>';
+                        }
+
+                        echo implode(', ', $shelfSeparated);
+                    @endphp
+                </td>
+                <td>
+                    @php
+                        $tagSeparated = [];
+                        foreach($book->tags as $tag) {
+                            $tagSeparated[] = '<a href="'
+                            . route('tag.show', ['slug' => $tag->slug])
+                            . '">'
+                            . $tag->name
+                            . '</a>';
+                        }
+
+                        echo implode(', ', $tagSeparated);
+                    @endphp
                 </td>
             </tr>
         @endforeach
