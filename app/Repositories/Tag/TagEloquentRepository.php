@@ -89,7 +89,9 @@ class TagEloquentRepository implements TagInterface
                 }
 
                 // Find tag by slug or ID.
-                $tags[] = $this->findOrCreate($tag);
+                if (isset($tag)) {
+                    $tags[] = $this->findOrCreate($tag);
+                }
             }
         }
 
