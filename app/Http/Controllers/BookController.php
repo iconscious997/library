@@ -28,7 +28,7 @@ class BookController extends Controller
      */
     public function __construct(BookInterface $book, MediumInterface $medium)
     {
-        $this->middleware('auth')->except('index');
+        $this->middleware('auth')->except('index', 'show');
         $this->book = $book;
         $this->medium = $medium;
     }
