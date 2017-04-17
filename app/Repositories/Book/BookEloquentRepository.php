@@ -79,6 +79,7 @@ class BookEloquentRepository implements BookInterface
      */
     public function paginate(int $limit)
     {
-        return Book::paginate($limit);
+        return Book::orderBy('name', 'asc')
+            ->paginate($limit);
     }
 }
