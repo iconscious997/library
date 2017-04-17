@@ -6,7 +6,9 @@
     @if(isset($shelf->name))
         <header>
             <h2 class="section-title">{{ $shelf->name }}</h2>
-            <a href="{{ route('shelf.edit', ['id' => $shelf->id]) }}">{{ trans('shelf.edit-link') }}</a>
+            @if(Auth::check() && Auth::user()->verified)
+                <a href="{{ route('shelf.edit', ['id' => $shelf->id]) }}">{{ trans('shelf.edit-link') }}</a>
+            @endif
         </header>
     @endif
 

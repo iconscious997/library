@@ -20,7 +20,7 @@ class MediumController extends Controller
      */
     public function __construct(MediumInterface $medium)
     {
-        $this->middleware('auth')->except('show');
+        $this->middleware(['auth', 'verified']);
         $this->medium = $medium;
     }
 

@@ -6,7 +6,9 @@
     @if(isset($author->name))
         <header>
             <h2 class="section-title">{{ $author->name .' '.$author->surname }}</h2>
-            <a href="{{ route('author.edit', ['id' => $author->id]) }}">{{ trans('author.edit-link') }}</a>
+            @if(Auth::check() && Auth::user()->verified)
+                <a href="{{ route('author.edit', ['id' => $author->id]) }}">{{ trans('author.edit-link') }}</a>
+            @endif
         </header>
     @endif
 

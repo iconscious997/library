@@ -20,7 +20,7 @@ class ShelfController extends Controller
      */
     public function __construct(ShelfInterface $shelf)
     {
-        $this->middleware('auth')->except('show');
+        $this->middleware(['auth', 'verified']);
         $this->shelf = $shelf;
     }
 

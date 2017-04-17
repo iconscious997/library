@@ -6,7 +6,9 @@
     @if(isset($publisher->name))
         <header>
             <h2 class="section-title">{{ $publisher->name }}</h2>
-            <a href="{{ route('publisher.edit', ['id' => $publisher->id]) }}">{{ trans('publisher.edit-link') }}</a>
+            @if(Auth::check() && Auth::user()->verified)
+                <a href="{{ route('publisher.edit', ['id' => $publisher->id]) }}">{{ trans('publisher.edit-link') }}</a>
+            @endif
         </header>
     @endif
 

@@ -6,7 +6,9 @@
     @if(isset($tag->name))
         <header>
             <h2 class="section-title">{{ $tag->name }}</h2>
-            <a href="{{ route('tag.edit', ['id' => $tag->id]) }}">{{ trans('tag.edit-link') }}</a>
+            @if(Auth::check() && Auth::user()->verified)
+                <a href="{{ route('tag.edit', ['id' => $tag->id]) }}">{{ trans('tag.edit-link') }}</a>
+            @endif
             <p>{{ $tag->description or ' ' }}</p>
         </header>
     @endif
