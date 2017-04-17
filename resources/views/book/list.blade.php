@@ -14,8 +14,10 @@
             <th class="book-name">{{ trans('book.name') }}</th>
             <th class="book-author">{{ trans('book.author') }}</th>
             <th class="book-publisher">{{ trans('book.publisher') }}</th>
-            <th class="book-medium">{{ trans('book.medium') }}</th>
-            <th class="book-shelf">{{ trans('book.shelf') }}</th>
+            @if(Auth::check())
+                <th class="book-medium">{{ trans('book.medium') }}</th>
+                <th class="book-shelf">{{ trans('book.shelf') }}</th>
+            @endif
             <th class="book-tag">{{ trans('book.tag') }}</th>
         </tr>
         </thead>
@@ -48,6 +50,7 @@
                         {{ $book->publisher->name }}
                     </a>
                 </td>
+                @if(Auth::check())
                 <td>
                     <a href="{{ route('medium.show', ['slug' => $book->medium->slug]) }}">
                         {{ $book->medium->name }}
@@ -67,6 +70,7 @@
                         echo implode(', ', $shelfSeparated);
                     @endphp
                 </td>
+                @endif
                 <td>
                     @php
                         $tagSeparated = [];
