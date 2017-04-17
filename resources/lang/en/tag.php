@@ -37,5 +37,6 @@ return [
 
     'edit-title'  => 'Edit tag: <span class="edit-subject">:tag</span>',
     'edit-button' => 'Update',
+    'edit-link'   => 'Edit tag',
 
 ];

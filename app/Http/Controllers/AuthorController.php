@@ -33,10 +33,10 @@ class AuthorController extends Controller
      */
     public function show(string $slug)
     {
-        $section = $this->author->findSlug($slug);
-        $books = $section->books()->paginate($this->limit);
+        $author = $this->author->findSlug($slug);
+        $books = $author->books()->paginate($this->limit);
 
-        return view('book.list', compact('section', 'books'));
+        return view('author.list', compact('author', 'books'));
     }
 
     /**
@@ -112,9 +112,9 @@ class AuthorController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         } else {
-            $this->author->update($request->all(), $id);
+            $author = $this->author->update($request->all(), $id);
 
-            return redirect('/');
+            return redirect()->route('author.show', ['slug' => $author->slug]);
         }
     }
 

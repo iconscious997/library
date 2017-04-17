@@ -53,7 +53,10 @@ class TagEloquentRepository implements TagInterface
     {
         $data['slug'] = str_slug($data['name']);
 
-        return $this->find($id)->update($data);
+        $tag = $this->find($id);
+        $tag->update($data);
+
+        return $tag;
     }
 
     /**

@@ -32,10 +32,10 @@ class ShelfController extends Controller
      */
     public function show(string $slug)
     {
-        $section = $this->shelf->findSlug($slug);
-        $books = $section->books()->paginate($this->limit);
+        $shelf = $this->shelf->findSlug($slug);
+        $books = $shelf->books()->paginate($this->limit);
 
-        return view('book.list', compact('section', 'books'));
+        return view('shelf.list', compact('shelf', 'books'));
     }
 
     /**
@@ -100,16 +100,16 @@ class ShelfController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        $validator = $this->validator($request->all());
+        $validator = $this->validator($request->all(), $id);
 
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
         } else {
-            $this->shelf->update($request->all(), $id);
+            $shelf = $this->shelf->update($request->all(), $id);
 
-            return redirect()->route('shelf.edit', ['id' => $id]);
+            return redirect()->route('shelf.show', ['slug' => $shelf->slug]);
         }
     }
 

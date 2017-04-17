@@ -47,12 +47,14 @@ class PublisherEloquentRepository implements PublisherInterface
      *
      * @param int $id
      * @param array $data
-     * @return bool
+     * @return \App\Publisher
      */
     public function update(int $id, array $data)
     {
-        return Publisher::find($id)
-            ->update($data);
+        $publisher = $this->find($id);
+        $publisher->update($data);
+
+        return $publisher;
     }
 
     /**

@@ -37,5 +37,6 @@ return [
 
     'edit-title'  => 'Edit publisher: <span class="edit-subject">:publisher</span>',
     'edit-button' => 'Update',
+    'edit-link'   => 'Edit publisher',
 
 ];

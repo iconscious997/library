@@ -48,13 +48,16 @@ class ShelfEloquentRepository implements ShelfInterface
      *
      * @param array $data
      * @param int $id
-     * @return bool
+     * @return \App\Shelf
      */
     public function update(array $data, int $id)
     {
         $data['slug'] = str_slug($data['name']);
 
-        return $this->find($id)->update($data);
+        $shelf = $this->find($id);
+        $shelf->update($data);
+
+        return $shelf;
     }
 
     /**

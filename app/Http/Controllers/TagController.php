@@ -32,10 +32,10 @@ class TagController extends Controller
      */
     public function show(string $slug)
     {
-        $section = $this->tag->findSlug($slug);
-        $books = $section->books()->paginate($this->limit);
+        $tag = $this->tag->findSlug($slug);
+        $books = $tag->books()->paginate($this->limit);
 
-        return view('book.list', compact('section', 'books'));
+        return view('tag.list', compact('tag', 'books'));
     }
 
     /**
@@ -91,16 +91,16 @@ class TagController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        $validator = $this->validator($request->all());
+        $validator = $this->validator($request->all(), $id);
 
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
         } else {
-            $this->tag->update($request->all(), $id);
+            $tag = $this->tag->update($request->all(), $id);
 
-            return redirect()->route('tag.edit', ['id' => $id]);
+            return redirect()->route('tag.show', ['slug' => $tag->slug]);
         }
     }
 

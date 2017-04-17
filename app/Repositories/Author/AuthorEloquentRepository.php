@@ -48,13 +48,16 @@ class AuthorEloquentRepository implements AuthorInterface
      *
      * @param array $data
      * @param int $id
-     * @return bool
+     * @return \App\Author
      */
     public function update(array $data, int $id)
     {
         $data['slug'] = str_slug($data['name'].' '.$data['surname']);
 
-        return $this->find($id)->update($data);
+        $author = $this->find($id);
+        $author->update($data);
+
+        return $author;
     }
 
     /**

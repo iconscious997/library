@@ -36,5 +36,6 @@ return [
 
     'edit-title'  => 'Edit shelf: <span class="edit-subject">:shelf</span>',
     'edit-button' => 'Update',
+    'edit-link'   => 'Edit shelf',
 
 ];

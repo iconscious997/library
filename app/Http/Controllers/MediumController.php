@@ -42,10 +42,10 @@ class MediumController extends Controller
      */
     public function show(string $slug)
     {
-        $section = $this->medium->findSlug($slug);
-        $books = $section->books()->paginate($this->limit);
+        $medium = $this->medium->findSlug($slug);
+        $books = $medium->books()->paginate($this->limit);
 
-        return view('book.list', compact('section', 'books'));
+        return view('medium.list', compact('medium', 'books'));
     }
 
     /**

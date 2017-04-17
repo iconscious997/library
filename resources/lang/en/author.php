@@ -37,5 +37,6 @@ return [
 
     'edit-title'  => 'Edit author: <span class="edit-subject">:author</span>',
     'edit-button' => 'Update',
+    'edit-link'   => 'Edit author',
 
 ];

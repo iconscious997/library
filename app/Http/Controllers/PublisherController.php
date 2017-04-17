@@ -32,10 +32,10 @@ class PublisherController extends Controller
      */
     public function show(string $slug)
     {
-        $section = $this->publisher->findSlug($slug);
-        $books = $section->books()->paginate($this->limit);
+        $publisher = $this->publisher->findSlug($slug);
+        $books = $publisher->books()->paginate($this->limit);
 
-        return view('book.list', compact('section', 'books'));
+        return view('publisher.list', compact('publisher', 'books'));
     }
 
     /**
@@ -107,9 +107,9 @@ class PublisherController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         } else {
-            $this->publisher->update($id, $request->all());
+            $publisher = $this->publisher->update($id, $request->all());
 
-            return redirect('/');
+            return redirect()->route('publisher.show', ['slug' => $publisher->slug]);
         }
     }
 
