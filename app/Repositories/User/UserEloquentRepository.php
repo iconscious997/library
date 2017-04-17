@@ -7,13 +7,6 @@ use App\User;
 class UserEloquentRepository
 {
     /**
-     * Minimum of owned books for user, to be trustworthy.
-     *
-     * @var int
-     */
-    protected $minimumOwnedBooks = 5;
-
-    /**
      * Update data at currently authenticated user.
      *
      * @param int $id
@@ -47,21 +40,8 @@ class UserEloquentRepository
     public function updateOwnedBooks(User $user)
     {
         $data['owned_books'] = $user->owned_books + 1;
-        $data['verified'] = $this->isVerified($user);
+        $data['verified'] = $user->isVerified();
 
         return $data;
-    }
-
-    /**
-     * @param User $user
-     * @return bool
-     */
-    public function isVerified(User $user)
-    {
-        if ($user->owned_books >= $this->minimumOwnedBooks) {
-            return true;
-        }
-
-        return false;
     }
 }

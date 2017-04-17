@@ -48,4 +48,22 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Check if is user verified or if has enough number of owned books to be
+     * verfied.
+     *
+     * @return bool
+     */
+    public function isVerified()
+    {
+        if (
+            $this->owned_books >= config('library.books_owned_by_user')
+            || $this->verified
+        ) {
+            return true;
+        }
+
+        return false;
+    }
 }
