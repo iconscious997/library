@@ -21,7 +21,7 @@ class CreateBooksTable extends Migration
             $table->string('slug', 255);
             $table->text('description')->nullable();
             $table->integer('year');
-            $table->integer('isbn')->nullable();
+            $table->string('isbn', 128)->nullable();
             $table->timestamps();
 
             // Relationships

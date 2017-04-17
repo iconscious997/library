@@ -150,6 +150,31 @@
     });
 
     /**
+     * Handle hiding of window editor, with ESC key.
+     */
+    $(document).keyup(function(e) {
+        if (e.keyCode == 27) { // escape key maps to keycode `27`
+            hideEditor();
+        }
+    });
+
+    /**
+     * Handle hiding of window editor, with cross button.
+     */
+    $('#close-editor').on('click', function() {
+       hideEditor();
+    });
+
+    /**
+     * Handle hiding of editor window.
+     */
+    function hideEditor()
+    {
+        var editor = $('#window');
+        editor.hide();
+    }
+
+    /**
      * Handle form sending if is in editor window.
      *
      * @param editorName
@@ -179,7 +204,13 @@
                         editor.hide();
                     }
 
-                    formType.append("<option value='"+ data.id +"' selected>"+ data.name +"</option>")
+                    var multiple = formType.attr('multiple');
+
+                    if (typeof multiple !== typeof undefined && multiple !== false) {
+                        formType.append("<option value='"+ data.id +"' selected>"+ data.name +"</option>");
+                    } else {
+                        formType.html("<option value='"+ data.id +"' selected>"+ data.name +"</option>");
+                    }
                 }
             })
         });

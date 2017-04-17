@@ -402,12 +402,22 @@ form {
   right: 0;
   width: 100%;
   z-index: 999; }
-  #window .window-creator {
+  #window #window-creator {
     background: #ffffff;
-    box-sizing: border-box;
+    border-radius: .3em;
+    box-shadow: 0 0 10px RGBA(0, 0, 0, 0.8);
     margin: 10% auto;
     min-height: 150px;
-    width: 500px; }
+    padding: 1em 2em 3em 2em;
+    width: 450px; }
+  #window #close-editor {
+    color: #ffffff;
+    cursor: pointer;
+    position: absolute;
+    top: 3.5em;
+    right: 3.5em; }
+    #window #close-editor:active, #window #close-editor:hover, #window #close-editor:focus {
+      color: #17e8a6; }
 
 #pagination {
   list-style: none;

@@ -8,11 +8,27 @@
     width: 100%;
     z-index: 999;
 
-    .window-creator {
+    #window-creator {
         background: $white;
-        box-sizing: border-box;
+        border-radius: .3em;
+        box-shadow: 0 0 10px RGBA(0, 0, 0, .8);
         margin: 10% auto;
         min-height: 150px;
-        width: 500px;
+        padding: 1em 2em 3em 2em;
+        width: 450px;
+    }
+
+    #close-editor {
+        color: $white;
+        cursor: pointer;
+        position: absolute;
+        top: 3.5em;
+        right: 3.5em;
+
+        &:active,
+        &:hover,
+        &:focus {
+            color: $green500;
+        }
     }
 }

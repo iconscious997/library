@@ -22,6 +22,7 @@
     </section>
 
     <section id="window">
+        <i class="fa fa-times" aria-hidden="true" id="close-editor"></i>
         <div id="window-creator"></div>
     </section>
 
@@ -30,6 +31,9 @@
 
         <section id="user-panel">
             @if(Auth::check())
+                <a href="{{ route('book.create') }}">
+                    {{ trans('book.create-link') }}
+                </a>
                 <a href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                    document.getElementById('logout-form').submit();">

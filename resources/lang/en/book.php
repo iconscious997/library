@@ -33,6 +33,7 @@ return [
 
     'create-title'  => 'Add new book',
     'create-button' => 'Submit',
+    'create-link'   => 'Add book',
 
     /*
     |--------------------------------------------------------------------------

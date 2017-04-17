@@ -60,7 +60,10 @@
 
             <div class="column">
                 <div class="form-group select-group {{ $errors->has('medium') ? ' has-error' : '' }}">
-                    <label for="book-authors">{{ trans('book.author') }}</label>
+                    <label for="book-authors">
+                        {{ trans('book.author') }}
+                        <i class="fa fa-plus editor-button" id="author-new" aria-hidden="true"></i>
+                    </label>
                     <select multiple name="authors[]" id="book-authors" style="width: 100%" required>
                         @foreach($book->authors as $author)
                             <option value="{{ $author->id }}" selected>{{ $author->name .' '. $author->surname }}</option>
@@ -69,14 +72,20 @@
                 </div>
 
                 <div class="form-group select-group {{ $errors->has('publisher') ? ' has-error' : '' }}">
-                    <label for="book-publisher">{{ trans('book.publisher') }}</label>
+                    <label for="book-publisher">
+                        {{ trans('book.publisher') }}
+                        <i class="fa fa-plus editor-button" id="publisher-new" aria-hidden="true"></i>
+                    </label>
                     <select name="publisher" id="book-publisher" style="width: 100%" required>
                         <option value="{{ $book->publisher->id }}" selected>{{ $book->publisher->name }}</option>
                     </select>
                 </div>
 
                 <div class="form-group select-group {{ $errors->has('shelf') ? ' has-error' : '' }}" >
-                    <label for="book-shelf">{{ trans('book.shelf') }}</label>
+                    <label for="book-shelf">
+                        {{ trans('book.shelf') }}
+                        <i class="fa fa-plus editor-button" id="shelf-new" aria-hidden="true"></i>
+                    </label>
                     <select multiple name="shelves[]" id="book-shelf" style="width: 100%" required>
                         @foreach($book->shelves as $shelf)
                             <option value="{{ $shelf->id }}" selected>{{ $shelf->name }}</option>
