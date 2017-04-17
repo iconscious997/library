@@ -14,7 +14,7 @@
             <th class="book-name">{{ trans('book.name') }}</th>
             <th class="book-author">{{ trans('book.author') }}</th>
             <th class="book-publisher">{{ trans('book.publisher') }}</th>
-            @if(Auth::check())
+            @if(Auth::check() && Auth::user()->verified)
                 <th class="book-medium">{{ trans('book.medium') }}</th>
                 <th class="book-shelf">{{ trans('book.shelf') }}</th>
             @endif
@@ -50,7 +50,7 @@
                         {{ $book->publisher->name }}
                     </a>
                 </td>
-                @if(Auth::check())
+                @if(Auth::check() && Auth::user()->verified)
                 <td>
                     <a href="{{ route('medium.show', ['slug' => $book->medium->slug]) }}">
                         {{ $book->medium->name }}

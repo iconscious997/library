@@ -19,7 +19,8 @@ class AppServiceProvider extends ServiceProvider
             'Medium',
             'Publisher',
             'Shelf',
-            'Tag'
+            'Tag',
+            'User'
         ];
 
         // Bind interfaces and repositories

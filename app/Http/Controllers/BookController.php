@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\BookStored;
 use Illuminate\Http\Request;
 use App\Repositories\Book\BookInterface;
 use App\Repositories\Medium\MediumInterface;
@@ -112,6 +113,8 @@ class BookController extends Controller
             if ($book->id) {
                 $book->shelves()->sync($request->input('shelves'));
             }
+
+            event(new BookStored($book));
 
             return redirect()->route('book.edit', ['id' => $book->id]);
         }
