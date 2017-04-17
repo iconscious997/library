@@ -3,6 +3,7 @@
 namespace App\Repositories\Tag;
 
 use App\Tag;
+use Illuminate\Support\Facades\Log;
 
 class TagEloquentRepository implements TagInterface
 {
@@ -89,6 +90,8 @@ class TagEloquentRepository implements TagInterface
                 $tags[] = $this->findOrCreate($tag);
             }
         }
+
+        Log::info($tags);
 
         return $tags;
     }

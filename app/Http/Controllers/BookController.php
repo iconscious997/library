@@ -102,7 +102,10 @@ class BookController extends Controller
 
             // Attach tags to book
             if ($book->id) {
-                $book->tags()->sync($request->input('tags'));
+                $tags = resolve('App\Repositories\Tag\TagInterface');
+                $tags = $tags->create($request->input('tags'));
+
+                $book->tags()->sync($tags);
             }
 
             // Attach shelves to book
