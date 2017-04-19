@@ -229,8 +229,8 @@ class BookController extends Controller
                     $book['page_count'] = $googleBooks['items'][0]["volumeInfo"]['pageCount'];
                 }
 
-                if (isset($googleBooks['items'][0]["volumeInfo"]['imageLinks']['smallThumbnail'])) {
-                    $book['cover'] = $googleBooks['items'][0]["volumeInfo"]['imageLinks']['smallThumbnail'];
+                if (isset($googleBooks['items'][0]["volumeInfo"]['imageLinks']['thumbnail'])) {
+                    $book['cover'] = $googleBooks['items'][0]["volumeInfo"]['imageLinks']['thumbnail'];
                 }
 
                 if (isset($googleBooks['items'][0]["volumeInfo"]['infoLink'])) {
