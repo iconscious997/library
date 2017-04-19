@@ -214,22 +214,37 @@ class BookController extends Controller
 
         // If is set book ISBN we can try search in Google API
         if ($book['isbn']) {
+            $isbn = preg_replace("/[^A-Za-z0-9 ]/", '', $book['isbn']);
+            
             $googleBooks = callApi("GET", "https://www.googleapis.com/books/v1/volumes", [
-                "q" => "isbn:".$book['isbn'],
+                "q" => "isbn:".$isbn,
                 "key" => config('library.books_api_key')
             ]);
 
             // When google found something we can use it!
             if ($googleBooks['totalItems'] !== 0) {
-                $book['published_at'] = $googleBooks['items'][0]["volumeInfo"]['publishedDate'];
-                $book['page_count'] = $googleBooks['items'][0]["volumeInfo"]['pageCount'];
-                $book['cover'] = $googleBooks['items'][0]["volumeInfo"]['imageLinks']['smallThumbnail'];
-                $book['google_link'] = $googleBooks['items'][0]["volumeInfo"]['infoLink'];
+                if (isset($googleBooks['items'][0]["volumeInfo"]['publishedDate'])) {
+                    $book['published_at'] = $googleBooks['items'][0]["volumeInfo"]['publishedDate'];
+                }
+
+                if (isset($googleBooks['items'][0]["volumeInfo"]['pageCount'])) {
+                    $book['page_count'] = $googleBooks['items'][0]["volumeInfo"]['pageCount'];
+                }
+
+                if (isset($googleBooks['items'][0]["volumeInfo"]['imageLinks']['smallThumbnail'])) {
+                    $book['cover'] = $googleBooks['items'][0]["volumeInfo"]['imageLinks']['smallThumbnail'];
+                }
+
+                if (isset($googleBooks['items'][0]["volumeInfo"]['infoLink'])) {
+                    $book['google_link'] = $googleBooks['items'][0]["volumeInfo"]['infoLink'];
+                }
 
                 // Only if user doesn't provide own description, which could be
                 // sometimes more usefull.
                 if (empty($book['description'])) {
-                    $book['description'] = $googleBooks['items'][0]["volumeInfo"]['infoLink']["description"];
+                    if (isset($googleBooks['items'][0]["volumeInfo"]['infoLink']["description"])) {
+                        $book['description'] = $googleBooks['items'][0]["volumeInfo"]['infoLink']["description"];
+                    }
                 }
             }
         }
