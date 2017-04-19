@@ -123,6 +123,10 @@ class Book extends Model
      */
     public function getPublishedAtAttribute($value)
     {
-        return date('d. M. Y', strtotime($value));
+        if ($value != null && strlen($value) == 10) {
+            return date('d. M. Y', strtotime($value));
+        }
+        
+        return $value;
     }
 }

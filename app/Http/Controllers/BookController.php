@@ -215,7 +215,7 @@ class BookController extends Controller
         // If is set book ISBN we can try search in Google API
         if ($book['isbn']) {
             $isbn = preg_replace("/[^A-Za-z0-9 ]/", '', $book['isbn']);
-            
+
             $googleBooks = callApi("GET", "https://www.googleapis.com/books/v1/volumes", [
                 "q" => "isbn:".$isbn,
                 "key" => config('library.books_api_key')
