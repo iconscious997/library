@@ -164,7 +164,7 @@ class BookController extends Controller
                 $book->shelves()->sync($request->input('shelves'));
             }
 
-            return redirect()->route('book.single', ['id' => $id]);
+            return redirect()->route('book.single', ['slug' => $book->slug]);
         }
     }
 
