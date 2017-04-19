@@ -52,7 +52,17 @@ class Book extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'year', 'isbn', 'publisher_id', 'medium_id', 'slug'
+        'name',
+        'description',
+        'year',
+        'isbn',
+        'publisher_id',
+        'medium_id',
+        'slug',
+        'published_at',
+        'page_count',
+        'cover',
+        'google_link'
     ];
 
     /**
@@ -103,5 +113,16 @@ class Book extends Model
     public function shelves()
     {
         return $this->belongsToMany('App\Shelf', 'book_shelf', 'book_id', 'shelf_id');
+    }
+
+    /**
+     * Format published date to d. m. Y standard.
+     *
+     * @param $value
+     * @return false|string
+     */
+    public function getPublishedAtAttribute($value)
+    {
+        return date('d. M. Y', strtotime($value));
     }
 }

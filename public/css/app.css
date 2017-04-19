@@ -363,7 +363,7 @@ form {
   .single h2.section-title {
     font-size: 2em;
     color: #0e171a;
-    margin: 2em 0 0 0; }
+    margin: 2em 0 1em 0; }
   .single h3 {
     border-bottom: 2px solid #0e171a;
     padding: 0 0 .5em 0;
@@ -394,6 +394,28 @@ form {
       padding: .5em; }
       .single a.tag:hover {
         background: #ffffff; }
+  .single .edit-book {
+    margin: 2em 0 0 0;
+    display: block; }
+  .single .link-section {
+    margin: 1em 0 0 0; }
+
+#book-details {
+  display: flex;
+  flex-direction: row; }
+
+#book-descripton {
+  flex-basis: 0;
+  display: inline-block;
+  vertical-align: top; }
+
+#book-cover {
+  flex-basis: 0;
+  display: inline-block;
+  margin: 1.15em 1.5em 0 0;
+  vertical-align: top; }
+  #book-cover img {
+    border: 2px solid #b6cfd7; }
 
 #window {
   background: rgba(14, 23, 26, 0.85);

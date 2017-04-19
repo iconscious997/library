@@ -13,6 +13,21 @@ return [
     |
     */
 
-    'books_owned_by_user' => env('BOOKS_OWNED_BY_USER', 5)
+    'books_owned_by_user' => env('BOOKS_OWNED_BY_USER', 5),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Google Books API Key
+    |--------------------------------------------------------------------------
+    |
+    | This key allows library to authentize against google servers and load
+    | even more information about your books! You need to be user of Google
+    | services for this to work.
+    |
+    | Key can be obtained at https://console.developers.google.com
+    |
+    */
+
+    'books_api_key' => env('BOOKS_API_KEY', NULL)
 
 ];

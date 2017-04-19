@@ -5,7 +5,7 @@
     h2.section-title {
         font-size: 2em;
         color: $black;
-        margin: 2em 0 0 0;
+        margin: 2em 0 1em 0;
     }
 
     h3 {
@@ -53,4 +53,34 @@
         }
     }
 
+    .edit-book {
+        margin: 2em 0 0 0;
+        display: block;
+    }
+
+    .link-section {
+        margin: 1em 0 0 0;
+    }
+}
+
+#book-details {
+    display: flex;
+    flex-direction: row;
+}
+
+#book-descripton {
+    flex-basis: 0;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#book-cover {
+    flex-basis: 0;
+    display: inline-block;
+    margin: 1.15em 1.5em 0 0;
+    vertical-align: top;
+
+    img {
+        border: 2px solid lighten($black, 70%);
+    }
 }

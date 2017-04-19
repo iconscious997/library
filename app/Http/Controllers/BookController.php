@@ -86,15 +86,8 @@ class BookController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         } else {
-            $book = $this->book->store([
-                'publisher_id' => $request->input('publisher'),
-                'medium_id' => $request->input('medium'),
-                'name' => $request->input('name'),
-                'description' => $request->input('description'),
-                'isbn' => $request->input('isbn'),
-                'year' => $request->input('year'),
-                'slug' => str_slug($request->input('name'))
-            ]);
+            $book = $this->extendBookData($request->all());
+            $book = $this->book->store($book);
 
             // Attach authors to book
             if ($book->id) {
@@ -150,15 +143,8 @@ class BookController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         } else {
-            $book = $this->book->update([
-                'publisher_id' => $request->input('publisher'),
-                'medium_id' => $request->input('medium'),
-                'name' => $request->input('name'),
-                'description' => $request->input('description'),
-                'isbn' => $request->input('isbn'),
-                'year' => $request->input('year'),
-                'slug' => str_slug($request->input('name'))
-            ], $id);
+            $book = $this->extendBookData($request->all());
+            $book = $this->book->update($book, $id);
 
             // Attach authors to book
             if ($book->id) {
@@ -200,5 +186,54 @@ class BookController extends Controller
             'shelves' => 'required',
             'publisher' => 'required'
         ]);
+    }
+
+
+
+    /**
+     * Extend book informations by getting some information from Google api.
+     *
+     * @param array $data
+     * @return array
+     */
+    protected function extendBookData(array $data)
+    {
+        $book = [
+            'publisher_id' => $data['publisher'],
+            'medium_id' => $data['medium'],
+            'name' => $data['name'],
+            'description' => $data['description'],
+            'isbn' => $data['isbn'],
+            'year' => $data['year'],
+            'slug' => str_slug($data['name']),
+            'published_at' => null,
+            'cover' => null,
+            'page_count' => null,
+            'google_link' => null
+        ];
+
+        // If is set book ISBN we can try search in Google API
+        if ($book['isbn']) {
+            $googleBooks = callApi("GET", "https://www.googleapis.com/books/v1/volumes", [
+                "q" => "isbn:".$book['isbn'],
+                "key" => config('library.books_api_key')
+            ]);
+
+            // When google found something we can use it!
+            if ($googleBooks['totalItems'] !== 0) {
+                $book['published_at'] = $googleBooks['items'][0]["volumeInfo"]['publishedDate'];
+                $book['page_count'] = $googleBooks['items'][0]["volumeInfo"]['pageCount'];
+                $book['cover'] = $googleBooks['items'][0]["volumeInfo"]['imageLinks']['smallThumbnail'];
+                $book['google_link'] = $googleBooks['items'][0]["volumeInfo"]['infoLink'];
+
+                // Only if user doesn't provide own description, which could be
+                // sometimes more usefull.
+                if (empty($book['description'])) {
+                    $book['description'] = $googleBooks['items'][0]["volumeInfo"]['infoLink']["description"];
+                }
+            }
+        }
+
+        return $book;
     }
 }

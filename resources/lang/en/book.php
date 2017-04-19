@@ -11,16 +11,17 @@ return [
     |
     */
 
-    'name'        => 'Name',
-    'year'        => 'Year',
-    'isbn'        => 'ISBN',
-    'description' => 'Description',
-    'medium'      => 'Type',
-    'author'      => 'Author',
-    'tag'         => 'Tag',
-    'shelf'       => 'Shelf',
-    'publisher'   => 'Publisher',
-    'tags'        => 'Tags',
+    'name'           => 'Name',
+    'year'           => 'Published',
+    'isbn'           => 'ISBN',
+    'description'    => 'Description',
+    'medium'         => 'Type',
+    'author'         => 'Author',
+    'tag'            => 'Tag',
+    'shelf'          => 'Shelf',
+    'publisher'      => 'Publisher',
+    'tags'           => 'Tags',
+    'read_on_google' => 'View on Google',
 
     /*
     |--------------------------------------------------------------------------
