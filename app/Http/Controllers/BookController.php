@@ -164,7 +164,7 @@ class BookController extends Controller
                 $book->shelves()->sync($request->input('shelves'));
             }
 
-            return redirect()->route('book.edit', ['id' => $id]);
+            return redirect()->route('book.single', ['id' => $id]);
         }
     }
 
@@ -187,8 +187,6 @@ class BookController extends Controller
             'publisher' => 'required'
         ]);
     }
-
-
 
     /**
      * Extend book informations by getting some information from Google api.
