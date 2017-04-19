@@ -8,7 +8,7 @@
     <section id="book-details">
         @if(isset($book->cover))
             <section id="book-cover">
-                <img src="{{ $book->cover }}" alt="Book cover: {{ $book->name }}">
+                <img src="{{ $book->cover }}" alt="Book cover: {{ $book->name }}" width="135">
             </section>
         @endif
 
