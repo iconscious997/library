@@ -240,8 +240,8 @@ class BookController extends Controller
                 // Only if user doesn't provide own description, which could be
                 // sometimes more usefull.
                 if (empty($book['description'])) {
-                    if (isset($googleBooks['items'][0]["volumeInfo"]['infoLink']["description"])) {
-                        $book['description'] = $googleBooks['items'][0]["volumeInfo"]['infoLink']["description"];
+                    if (isset($googleBooks['items'][0]["volumeInfo"]["description"])) {
+                        $book['description'] = $googleBooks['items'][0]["volumeInfo"]["description"];
                     }
                 }
             }
