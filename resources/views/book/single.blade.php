@@ -43,6 +43,10 @@
                     <strong>{{ trans('book.year') }}:</strong>
                     {{ $book->published_at or $book->year }}
                 </li>
+                <li>
+                    <strong>{{ trans('book.pages') }}:</strong>
+                    {{ $book->page_count }} s.
+                </li>
                 @if($book->isbn)
                 <li>
                     <strong>{{ trans('book.isbn') }}:</strong>

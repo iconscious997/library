@@ -22,6 +22,7 @@ return [
     'publisher'      => 'Publisher',
     'tags'           => 'Tags',
     'read_on_google' => 'View on Google',
+    'pages'          => 'Pages',
 
     /*
     |--------------------------------------------------------------------------
