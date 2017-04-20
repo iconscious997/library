@@ -28,13 +28,20 @@ class ShelfController extends Controller
     /**
      * Show all books contained in tag.
      *
+     * @param Request $request
      * @param string $slug
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show(string $slug)
+    public function show(Request $request, string $slug)
     {
+        $sortParameters = buildSortParameters($request->all());
+
         $shelf = $this->shelf->findSlug($slug);
-        $books = $shelf->books()->paginate($this->limit);
+
+        $books = $shelf->books()
+            ->sortBy($sortParameters['property'], $sortParameters['direction'])
+            ->paginate($this->limit)
+            ->appends($sortParameters['appends']);
 
         return view('shelf.list', compact('shelf', 'books'));
     }

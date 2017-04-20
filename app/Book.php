@@ -26,6 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Book whereName($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Book wherePublisherId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Book whereYear($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Book sortBy($value, $value)
  * @mixin \Eloquent
  * @property string $slug
  * @property \Carbon\Carbon $created_at
@@ -128,5 +129,45 @@ class Book extends Model
         }
 
         return $value;
+    }
+    /**
+     * Order query results by property.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string $property
+     * @param string $order
+     * @return \Illuminate\Database\Eloquent\Builder|Book
+     */
+    public function scopeSortBy($query, string $property, string $order)
+    {
+        switch ($property) {
+            case 'publisher':
+                $query->join('publishers', 'books.publisher_id', '=', 'publishers.id')
+                    ->select('books.id', 'books.publisher_id', 'books.medium_id', 'books.name', 'books.slug')
+                    ->orderBy('publishers.name', $order);
+                break;
+            case 'author':
+                $query->join('book_author', 'books.id', '=', 'book_author.book_id')
+                    ->join('authors', 'book_author.author_id', '=', 'authors.id')
+                    ->select('books.id', 'books.publisher_id', 'books.medium_id', 'books.name', 'books.slug')
+                    ->orderBy('authors.surname', $order)
+                    ->groupBy('books.id', 'books.publisher_id', 'books.medium_id', 'books.name', 'books.slug');
+                break;
+            case 'shelf':
+                $query->join('book_shelf', 'books.id', '=', 'book_shelf.book_id')
+                    ->join('shelves', 'book_shelf.shelf_id', '=', 'shelves.id')
+                    ->select('books.id', 'books.publisher_id', 'books.medium_id', 'books.name', 'books.slug')
+                    ->orderBy('shelves.name', $order);
+                break;
+            case 'medium':
+                $query->join('mediums', 'books.medium_id', '=', 'mediums.id')
+                    ->select('books.id', 'books.publisher_id', 'books.medium_id', 'books.name', 'books.slug')
+                    ->orderBy('mediums.name', $order);
+                break;
+            default:
+                $query->orderBy($property, $order);
+        }
+
+        return $query;
     }
 }

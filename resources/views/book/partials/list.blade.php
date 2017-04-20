@@ -1,12 +1,37 @@
 <table>
     <thead>
     <tr>
-        <th class="book-name">{{ trans('book.name') }}</th>
-        <th class="book-author">{{ trans('book.author') }}</th>
-        <th class="book-publisher">{{ trans('book.publisher') }}</th>
+        <th class="book-name">
+            <i class="fa fa-sort{{ sortingIconDir('name') }}" aria-hidden="true"></i>
+            <a href="{{ sortingLink('name', 'desc') }}">
+                {{ trans('book.name') }}
+            </a>
+        </th>
+        <th class="book-author">
+            <i class="fa fa-sort{{ sortingIconDir('author') }}" aria-hidden="true"></i>
+            <a href="{{ sortingLink('author', 'asc') }}">
+                {{ trans('book.author') }}
+            </a>
+        </th>
+        <th class="book-publisher">
+            <i class="fa fa-sort{{ sortingIconDir('publisher') }}" aria-hidden="true"></i>
+            <a href="{{ sortingLink('publisher', 'asc') }}">
+                {{ trans('book.publisher') }}
+            </a>
+        </th>
         @if(Auth::check() && Auth::user()->verified)
-            <th class="book-medium">{{ trans('book.medium') }}</th>
-            <th class="book-shelf">{{ trans('book.shelf') }}</th>
+            <th class="book-medium">
+                <i class="fa fa-sort{{ sortingIconDir('medium') }}" aria-hidden="true"></i>
+                <a href="{{ sortingLink('medium', 'asc') }}">
+                    {{ trans('book.medium') }}
+                </a>
+            </th>
+            <th class="book-shelf">
+                <i class="fa fa-sort{{ sortingIconDir('shelf') }}" aria-hidden="true"></i>
+                <a href="{{ sortingLink('shelf', 'asc') }}">
+                    {{ trans('book.shelf') }}
+                </a>
+            </th>
         @endif
         <th class="book-tag">{{ trans('book.tag') }}</th>
     </tr>

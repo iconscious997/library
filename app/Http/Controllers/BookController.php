@@ -37,11 +37,14 @@ class BookController extends Controller
     /**
      * Show book index.
      *
+     * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $books = $this->book->paginate($this->limit);
+        $sortParameters = buildSortParameters($request->all());
+
+        $books = $this->book->paginate($this->limit, $sortParameters);
 
         return view('book.list', compact('books'));
     }
@@ -221,28 +224,28 @@ class BookController extends Controller
 
             // When google found something we can use it!
             if ($googleBooks['totalItems'] !== 0) {
-                if (isset($googleBooks['items'][0]["volumeInfo"]['publishedDate'])) {
-                    $book['published_at'] = $googleBooks['items'][0]["volumeInfo"]['publishedDate'];
+                $googleBook = $googleBooks['items'][0]["volumeInfo"];
+
+                if (isset($googleBook['publishedDate'])) {
+                    $book['published_at'] = $googleBook['publishedDate'];
                 }
 
-                if (isset($googleBooks['items'][0]["volumeInfo"]['pageCount'])) {
-                    $book['page_count'] = $googleBooks['items'][0]["volumeInfo"]['pageCount'];
+                if (isset($googleBook['pageCount'])) {
+                    $book['page_count'] = $googleBook['pageCount'];
                 }
 
-                if (isset($googleBooks['items'][0]["volumeInfo"]['imageLinks']['thumbnail'])) {
-                    $book['cover'] = $googleBooks['items'][0]["volumeInfo"]['imageLinks']['thumbnail'];
+                if (isset($googleBook['imageLinks']['thumbnail'])) {
+                    $book['cover'] = $googleBook['imageLinks']['thumbnail'];
                 }
 
-                if (isset($googleBooks['items'][0]["volumeInfo"]['infoLink'])) {
-                    $book['google_link'] = $googleBooks['items'][0]["volumeInfo"]['infoLink'];
+                if (isset($googleBook['infoLink'])) {
+                    $book['google_link'] = $googleBook['infoLink'];
                 }
 
                 // Only if user doesn't provide own description, which could be
                 // sometimes more usefull.
-                if (empty($book['description'])) {
-                    if (isset($googleBooks['items'][0]["volumeInfo"]["description"])) {
-                        $book['description'] = $googleBooks['items'][0]["volumeInfo"]["description"];
-                    }
+                if (empty($book['description']) && isset($googleBook["description"])) {
+                        $book['description'] = $googleBook["description"];
                 }
             }
         }

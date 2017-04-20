@@ -27,13 +27,19 @@ class TagController extends Controller
     /**
      * Show all books contained in tag.
      *
+     * @param Request $request
      * @param string $slug
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show(string $slug)
+    public function show(Request $request, string $slug)
     {
+        $sortParameters = buildSortParameters($request->all());
+
         $tag = $this->tag->findSlug($slug);
-        $books = $tag->books()->paginate($this->limit);
+        $books = $tag->books()
+            ->sortBy($sortParameters['property'], $sortParameters['direction'])
+            ->paginate($this->limit)
+            ->appends($sortParameters['appends']);
 
         return view('tag.list', compact('tag', 'books'));
     }

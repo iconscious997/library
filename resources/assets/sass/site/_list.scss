@@ -30,6 +30,7 @@
     thead {
         background: $black;
         color: $white;
+        cursor: default;
         font-weight: 400;
     }
 
@@ -38,6 +39,7 @@
         font-weight: normal;
         padding: 1em;
         text-align: left;
+        position: relative;
 
         &.book-name {
             width: 35%;
@@ -53,6 +55,32 @@
         }
         &.book-shelf {
             width: 11%;
+        }
+
+        a {
+            color: $white;
+            text-decoration: none;
+            vertical-align: middle;
+
+            &:active,
+            &:hover,
+            &:focus {
+                outline: none;
+                color: $green500;
+            }
+        }
+
+        .fa {
+            color: darken($white, 60%);
+            display: inline-block;
+            font-size: .8em;
+            margin: 0 .4em 0 0;
+            vertical-align: middle;
+
+            &.fa-sort-asc,
+            &.fa-sort-desc {
+                color: $white;
+            }
         }
     }
 

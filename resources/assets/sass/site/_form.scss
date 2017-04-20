@@ -1,6 +1,7 @@
 form {
     @include placeholder(lighten($black, 70%));
     margin: 0 auto 0;
+    padding: 0 0 0 0;
     width: 450px;
     &.long {
         width: 100%;
@@ -25,7 +26,7 @@ form {
 
     h1 {
         @include paragraph;
-        margin: 1em 0 1em 0;
+        margin: 2em 0 .5em 0;
     }
 
     .edit-subject {
@@ -33,13 +34,19 @@ form {
     }
 
     .editor-button {
+        color: $green500;
         cursor: pointer;
+        font-size: 1.5em;
         margin: 0 0 0 .5em;
+        position: absolute;
+        top: 1.95em;
+        right: 1em;
+        z-index: 100;
 
         &:active,
         &:hover,
         &:focus {
-            color: $green500;
+            color: $black;
         }
     }
 
@@ -99,6 +106,7 @@ form {
         display: block;
         font-size: .9em;
         margin: .5em 0 .5em 0;
+        position: relative;
 
         &.checkbox {
             @include paragraph;

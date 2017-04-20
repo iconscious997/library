@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * Make request to an API and retrive json decoded data.
+ *
+ * @param string $method
+ * @param string $url
+ * @param bool $data
+ * @param string|null $apiKey
+ * @return mixed
+ */
 function callApi(string $method, string $url, $data = false, string $apiKey = null)
 {
     $curl = curl_init();
@@ -29,4 +38,66 @@ function callApi(string $method, string $url, $data = false, string $apiKey = nu
     curl_close($curl);
 
     return json_decode($result, true);
+}
+
+/**
+ * Helper function which help us build sorting array which we can use as parameter
+ * in our sortBy model function.
+ *
+ * @param array $request
+ * @return mixed
+ */
+function buildSortParameters(array $request)
+{
+    $result['property'] = 'name';
+    $result['direction'] = 'asc';
+    $result['appends'] = [];
+
+    if (isset($request['sort']) && isset($request['order'])) {
+        $result['property'] = $request['sort'];
+        $result['direction'] = $request['order'];
+
+        $result['appends']['sort'] = $result['property'];
+        $result['appends']['order'] = $result['direction'];
+    }
+
+    return $result;
+}
+
+function sortingLink(string $property, string $direction) {
+    $query = $_SERVER['QUERY_STRING'];
+    $url = strtok($_SERVER["REQUEST_URI"], '?');
+
+    if (isset($_GET['order'])) {
+        $queryArray = $_GET;
+
+        $queryArray['sort'] = $property;
+
+        switch($queryArray['order']) {
+            case 'asc':
+                $queryArray['order'] = 'desc';
+                break;
+            default:
+                $queryArray['order'] = 'asc';
+        }
+
+        return $url .'?'. http_build_query($queryArray);
+    } else {
+        return $url .'?sort='. $property .'&order='. $direction .'&'. $query;
+    }
+}
+
+/**
+ * Show sorting icon
+ *
+ * @param string $property
+ * @return null|string
+ */
+function sortingIconDir(string $property)
+{
+    if (isset($_GET['sort']) && $_GET['sort'] == $property ) {
+        return '-'.$_GET['order'];
+    }
+
+    return null;
 }

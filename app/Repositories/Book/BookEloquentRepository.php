@@ -33,15 +33,19 @@ class BookEloquentRepository implements BookInterface
      *
      * @param string $query
      * @param int $limit
-     * @return \App\Book|\Illuminate\Contracts\Pagination\LengthAwarePaginator
+     * @param array $sortParameters
+     * @return Book|\Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function findName(string $query, int $limit)
+    public function findName(string $query, int $limit, array $sortParameters = [])
     {
-        return Book::where('name', 'LIKE', '%'.$query.'%')
+        $sortParameters['appends']['query'] = $query;
+
+        // Because sortBy could sometimes use joins we need to make sure that
+        // search will be always in books table.
+        return Book::where('books.name', 'LIKE', '%'.$query.'%')
+            ->sortBy($sortParameters['property'], $sortParameters['direction'])
             ->paginate($limit)
-            ->appends([
-                'query' => $query
-            ]);
+            ->appends($sortParameters['appends']);
     }
 
     /**
@@ -75,11 +79,13 @@ class BookEloquentRepository implements BookInterface
      * Paginate books from database.
      *
      * @param int $limit
+     * @param array $sortParameters
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function paginate(int $limit)
+    public function paginate(int $limit, array $sortParameters = [])
     {
-        return Book::orderBy('name', 'asc')
-            ->paginate($limit);
+        return Book::sortBy($sortParameters['property'], $sortParameters['direction'])
+            ->paginate($limit)
+            ->appends($sortParameters['appends']);
     }
 }

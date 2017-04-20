@@ -28,7 +28,7 @@ body {
 
 #content {
   box-sizing: border-box;
-  padding: 0 3.5em 6em 3.5em; }
+  padding: 0 3.5em 4em 3.5em; }
 
 #app-header {
   font-family: Arial, serif;
@@ -75,6 +75,7 @@ body {
 
 form {
   margin: 0 auto 0;
+  padding: 0 0 0 0;
   width: 450px; }
   form ::-webkit-input-placeholder {
     color: #b6cfd7; }
@@ -102,16 +103,22 @@ form {
       margin: 0; }
   form h1 {
     font-family: Arial, serif;
-    margin: 1em 0 1em 0; }
+    margin: 2em 0 .5em 0; }
     .wf-varelaround-n4-active form h1 {
       font-family: "Varela Round", Arial, serif; }
   form .edit-subject {
     color: #17e8a6; }
   form .editor-button {
+    color: #17e8a6;
     cursor: pointer;
-    margin: 0 0 0 .5em; }
+    font-size: 1.5em;
+    margin: 0 0 0 .5em;
+    position: absolute;
+    top: 1.95em;
+    right: 1em;
+    z-index: 100; }
     form .editor-button:active, form .editor-button:hover, form .editor-button:focus {
-      color: #17e8a6; }
+      color: #0e171a; }
   form .has-error input {
     border-color: #b44343; }
     form .has-error input:active, form .has-error input:hover, form .has-error input:focus {
@@ -153,7 +160,8 @@ form {
     color: #0e8b64;
     display: block;
     font-size: .9em;
-    margin: .5em 0 .5em 0; }
+    margin: .5em 0 .5em 0;
+    position: relative; }
     .wf-oswald-n4-active form label {
       font-family: Oswald, Arial, serif; }
     form label.checkbox {
@@ -330,12 +338,14 @@ form {
   .list thead {
     background: #0e171a;
     color: #ffffff;
+    cursor: default;
     font-weight: 400; }
   .list th {
     font-size: .95em;
     font-weight: normal;
     padding: 1em;
-    text-align: left; }
+    text-align: left;
+    position: relative; }
     .list th.book-name {
       width: 35%; }
     .list th.book-author {
@@ -346,6 +356,21 @@ form {
       width: 8%; }
     .list th.book-shelf {
       width: 11%; }
+    .list th a {
+      color: #ffffff;
+      text-decoration: none;
+      vertical-align: middle; }
+      .list th a:active, .list th a:hover, .list th a:focus {
+        outline: none;
+        color: #17e8a6; }
+    .list th .fa {
+      color: #666666;
+      display: inline-block;
+      font-size: .8em;
+      margin: 0 .4em 0 0;
+      vertical-align: middle; }
+      .list th .fa.fa-sort-asc, .list th .fa.fa-sort-desc {
+        color: #ffffff; }
   .list tbody tr:nth-child(even) {
     background: #e7eff2; }
   .list td {

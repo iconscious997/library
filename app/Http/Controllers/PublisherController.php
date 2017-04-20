@@ -27,13 +27,20 @@ class PublisherController extends Controller
     /**
      * Show all books contained in tag.
      *
+     * @param Request $request
      * @param string $slug
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show(string $slug)
+    public function show(Request $request, string $slug)
     {
+        $sortParameters = buildSortParameters($request->all());
+
         $publisher = $this->publisher->findSlug($slug);
-        $books = $publisher->books()->paginate($this->limit);
+
+        $books = $publisher->books()
+            ->sortBy($sortParameters['property'], $sortParameters['direction'])
+            ->paginate($this->limit)
+            ->appends($sortParameters['appends']);
 
         return view('publisher.list', compact('publisher', 'books'));
     }

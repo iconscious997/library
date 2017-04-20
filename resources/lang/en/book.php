@@ -61,4 +61,17 @@ return [
 
     'tag-add-description' => 'You can create new tags by separating them with comma.',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Book Tooltips Language Lines
+    |--------------------------------------------------------------------------
+    |
+    | ...
+    |
+    */
+
+    'tooltip-create_author'    => 'Add new author.',
+    'tooltip-create_publisher' => 'Add new publisher.',
+    'tooltip-create_shelf'     => 'Create new shelf.'
+
 ];

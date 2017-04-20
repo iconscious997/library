@@ -54,7 +54,13 @@ class SearchController extends Controller
             return redirect($isCommand['command']);
         }
 
-        $books = $this->book->findName($request->input('query'), $this->limit);
+        $sortParameters = buildSortParameters($request->all());
+
+        $books = $this->book->findName(
+            $request->input('query'),
+            $this->limit,
+            $sortParameters
+        );
 
         return view('book.list', compact('books'));
     }

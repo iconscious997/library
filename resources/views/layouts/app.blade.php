@@ -15,6 +15,9 @@
     <link href="{{ asset('css/select2.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
 
+    <!-- Favicon -->
+    <link rel="icon" href="{{ asset('favicon.png') }}">
+
     <title>{{ config('app.name', 'Library') }}</title>
 </head>
 <body>
@@ -69,6 +72,7 @@
                 urls: ['/css/app.css']
             }
         });
+
         $.fn.select2.defaults.set("theme", "library");
     </script>
 

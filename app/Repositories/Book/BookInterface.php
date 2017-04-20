@@ -20,14 +20,16 @@ interface BookInterface
      */
     public function find(int $id);
 
+
     /**
      * Find book by it's name.
      *
      * @param string $query
      * @param int $limit
+     * @param array $orderBy
      * @return \App\Book|\Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function findName(string $query, int $limit);
+    public function findName(string $query, int $limit, array $orderBy = []);
 
     /**
      * Find book by it's slug.
@@ -50,7 +52,8 @@ interface BookInterface
      * Paginate books from database.
      *
      * @param int $limit
+     * @param array $orderBy
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function paginate(int $limit);
+    public function paginate(int $limit, array $orderBy = []);
 }
