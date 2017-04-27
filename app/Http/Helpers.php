@@ -101,3 +101,16 @@ function sortingIconDir(string $property)
 
     return null;
 }
+
+/**
+ * Remove http protocol from URL, because we want to store only domain.
+ *
+ * @param string $url
+ * @return bool|string
+ */
+function removeHttpFromUrl(string $url)
+{
+    $charPos = strpos($url, ':');
+
+    return substr($url, $charPos + 1);
+}

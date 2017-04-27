@@ -235,11 +235,11 @@ class BookController extends Controller
                 }
 
                 if (isset($googleBook['imageLinks']['thumbnail'])) {
-                    $book['cover'] = $googleBook['imageLinks']['thumbnail'];
+                    $book['cover'] = removeHttpFromUrl($googleBook['imageLinks']['thumbnail']);
                 }
 
                 if (isset($googleBook['infoLink'])) {
-                    $book['google_link'] = $googleBook['infoLink'];
+                    $book['google_link'] = removeHttpFromUrl($googleBook['infoLink']);
                 }
 
                 // Only if user doesn't provide own description, which could be
