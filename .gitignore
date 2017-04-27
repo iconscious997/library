@@ -24,3 +24,6 @@ _ide_helper.php
 
 # Apache
 .apache
+
+# SSL
+public/.well-known/
